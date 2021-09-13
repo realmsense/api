@@ -3,6 +3,11 @@ type: docker
 name: default
 
 steps:
+  - name: submodules
+    image: alpine/git
+    commands:
+      - git submodule update --init --recursive
+
   - name: build
     image: node
     commands:
