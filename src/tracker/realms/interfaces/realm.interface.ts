@@ -1,25 +1,10 @@
 import { Type } from "class-transformer";
 import { IsNotEmpty, ValidateNested, IsNumber, IsString, IsOptional } from "class-validator";
-import { WorldPosData, WorldPosDataDTO } from "src/tracker/interfaces/position-dto";
-import { Server, ServerDTO } from "src/tracker/interfaces/server.interface";
+import { IRealm, IServer, IWorldPosData } from "@realmsense/types";
+import { WorldPosDataDTO } from "src/tracker/interfaces/worldposdata.dto";
+import { ServerDTO } from "src/tracker/interfaces/server.dto";
 
-export interface Realm {
-    name: string;
-    openedTime: number;
-    objectID: number;
-    pos: WorldPosData;
-    server: Server,
-    players: number,
-    maxPlayers: number,
-
-    queue: number,
-    updatedTime: number,
-
-    ip?: string,
-    heroesLeft?: number
-}
-
-export class RealmDto implements Realm {
+export class RealmDto implements IRealm {
     @IsString()
     public name: string;
 
@@ -32,12 +17,12 @@ export class RealmDto implements Realm {
     @IsNotEmpty()
     @ValidateNested()
     @Type(() => WorldPosDataDTO)
-    public pos: WorldPosData;
+    public pos: IWorldPosData;
 
     @IsNotEmpty()
     @ValidateNested()
     @Type(() => ServerDTO)
-    public server: Server;
+    public server: IServer;
 
     @IsNumber()
     public players: number;

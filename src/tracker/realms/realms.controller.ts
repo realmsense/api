@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, Patch, Put, Query } from "@nestjs/common";
-import { Realm, RealmDto } from "./interfaces/realm.interface";
+import { IRealm } from "@realmsense/types";
+import { RealmDto } from "./interfaces/realm.interface";
 import { RealmsService } from "./realms.service";
 
 @Controller("tracker/realms")
@@ -24,7 +25,7 @@ export class RealmsController {
     }
 
     @Get("")
-    public getRealms(@Query("serverName") serverName?: string): Realm[] {
+    public getRealms(@Query("serverName") serverName?: string): IRealm[] {
         return this.realmService.getRealms(serverName);
     }
 }

@@ -1,11 +1,7 @@
 import { IsNumber } from "class-validator";
+import { IWorldPosData } from "@realmsense/types";
 
-export interface WorldPosData {
-    x: number;
-    y: number;
-}
-
-export class WorldPosDataDTO implements WorldPosData {
+export class WorldPosDataDTO implements IWorldPosData {
     @IsNumber()
     public x: number;
 

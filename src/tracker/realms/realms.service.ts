@@ -1,10 +1,10 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { Realm } from "./interfaces/realm.interface";
+import { IRealm } from "@realmsense/types";
 
 @Injectable()
 export class RealmsService {
 
-    private realms: Realm[] = [];
+    private realms: IRealm[] = [];
 
     constructor( ) { }
 
@@ -23,7 +23,7 @@ export class RealmsService {
         this.realms.slice(foundIndex, 1);
     }
 
-    public createRealm(realm: Realm): void {
+    public createRealm(realm: IRealm): void {
         // TODO: check if duplicate
 
         const duplicate = this.realms.find((value) => value.objectID == realm.objectID);
@@ -36,7 +36,7 @@ export class RealmsService {
         this.realms.push(realm);
     }
 
-    public updateRealm(realm: Realm): void {
+    public updateRealm(realm: IRealm): void {
         const foundIndex = this.realms.findIndex((value) => value.objectID == realm.objectID);
         if (foundIndex == -1) {
             throw new NotFoundException(`No realm was found with objectId ${realm.objectID}`);
@@ -45,7 +45,7 @@ export class RealmsService {
         this.realms[foundIndex] = realm;
     }
 
-    public getRealms(serverName?: string): Realm[] {
+    public getRealms(serverName?: string): IRealm[] {
         let realms = [...this.realms];
         if (serverName) {
             realms = realms.filter((realm) => realm.server.name == serverName);
@@ -53,7 +53,7 @@ export class RealmsService {
         return realms;
     }
 
-    public findRealm(objectId: number): Realm {
+    public findRealm(objectId: number): IRealm {
         return this.realms.find((realm) => realm.objectID == objectId);
     }
 }
