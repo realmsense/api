@@ -1,9 +1,9 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { IsNotEmpty } from "class-validator";
-import { Permission } from "@realmsense/types";
+import { Permission, IUser } from "@realmsense/types";
 
 @Entity()
-export class User {
+export class User implements IUser {
     @PrimaryGeneratedColumn()
     public id: number;
 
