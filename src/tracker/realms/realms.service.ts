@@ -1,10 +1,12 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
-import { IRealm } from "@realmsense/types";
+import { Injectable, NotFoundException, MessageEvent } from "@nestjs/common";
+import { IRealm, IRealmEvent } from "@realmsense/types";
+import { Observable, Subject } from "rxjs";
 
 @Injectable()
 export class RealmsService {
 
     private realms: IRealm[] = [];
+    private events = new Subject<MessageEvent>();
 
     constructor( ) { }
 
@@ -20,7 +22,8 @@ export class RealmsService {
             throw new NotFoundException(`No realm was found with objectId ${objectId}`);
         }
 
-        this.realms.slice(foundIndex, 1);
+        const realm = this.realms.slice(foundIndex, 1)[0];
+        this.callEvent({...realm, event: "Deleted"});
     }
 
     public createRealm(realm: IRealm): void {
@@ -34,6 +37,7 @@ export class RealmsService {
         }
 
         this.realms.push(realm);
+        this.callEvent({...realm, event: "Created"});
     }
 
     public updateRealm(realm: IRealm): void {
@@ -43,6 +47,7 @@ export class RealmsService {
         }
 
         this.realms[foundIndex] = realm;
+        this.callEvent({...realm, event: "Updated"});
     }
 
     public getRealms(serverName?: string): IRealm[] {
@@ -55,5 +60,13 @@ export class RealmsService {
 
     public findRealm(objectId: number): IRealm {
         return this.realms.find((realm) => realm.objectID == objectId);
+    }
+
+    public callEvent(event: IRealmEvent): void {
+        this.events.next({data: event});
+    }
+    
+    public sendEvents(): Observable<MessageEvent> {
+        return this.events.asObservable();
     }
 }

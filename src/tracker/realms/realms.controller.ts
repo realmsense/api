@@ -1,5 +1,6 @@
-import { Body, Controller, Delete, Get, HttpCode, Patch, Put, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, Patch, Put, Query, Sse, MessageEvent, Request } from "@nestjs/common";
 import { IRealm } from "@realmsense/types";
+import { Observable } from "rxjs";
 import { RealmDto } from "./interfaces/realm.interface";
 import { RealmsService } from "./realms.service";
 
@@ -27,5 +28,10 @@ export class RealmsController {
     @Get("")
     public getRealms(@Query("serverName") serverName?: string): IRealm[] {
         return this.realmService.getRealms(serverName);
+    }
+
+    @Sse("events")
+    public events(): Observable<MessageEvent> {
+        return this.realmService.sendEvents();
     }
 }
