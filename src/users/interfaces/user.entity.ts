@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { IsNotEmpty } from "class-validator";
-import { Permission } from "src/auth/permissions/permission.enum";
+import { Permission } from "@realmsense/types";
 
 @Entity()
 export class User {

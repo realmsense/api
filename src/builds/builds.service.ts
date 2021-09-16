@@ -5,8 +5,8 @@ import { Repository } from "typeorm";
 import { Build } from "./interfaces/build.entity";
 import { BuildType, CreateBuildTypeDTO } from "./interfaces/build_type.entity";
 import { User } from "src/users/interfaces/user.entity";
-import { Permission } from "src/auth/permissions/permission.enum";
 import { DeepPartial } from "src/helpers";
+import { Permission } from "@realmsense/types";
 
 @Injectable()
 export class BuildsService {

@@ -4,7 +4,7 @@ import { JwtService } from "@nestjs/jwt";
 import { User } from "src/users/interfaces/user.entity";
 import { UsersService } from "src/users/users.service";
 import { jwtConstants } from "./constants";
-import { JWTLoginResponse } from "./models/jwt-login-response";
+import { IAuthToken } from "@realmsense/types";
 
 @Injectable()
 export class AuthService {
@@ -23,13 +23,14 @@ export class AuthService {
         return null;
     }
 
-    public async login(user: User): Promise<JWTLoginResponse> {
+    public async login(user: User): Promise<IAuthToken> {
         const payload = { username: user.username, sub: user.id };
         const timestamp = Math.floor(Date.now() / 1000);
-        return {
+        const authToken: IAuthToken = {
             token: this.jwtService.sign(payload),
             expiration: timestamp + jwtConstants.expiration
         };
+        return authToken;
     }
 
     private async validateUsernamePassword(username: string, password: string): Promise<void> {
@@ -59,7 +60,7 @@ export class AuthService {
     public async register(username: string, password: string): Promise<void> {
 
         await this.validateUsernamePassword(username, password);
-        
+
         const hash = await bcrypt.hash(password, 10);
 
         const user = new User();

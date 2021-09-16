@@ -3,7 +3,7 @@ import { Injectable, CanActivate, ExecutionContext } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import { User } from "src/users/interfaces/user.entity";
 import { PERMISSION_KEY } from "./permission.decorator";
-import { Permission } from "./permission.enum";
+import { Permission } from "@realmsense/types";
 
 @Injectable()
 export class PermissionGuard implements CanActivate {
