@@ -1,10 +1,10 @@
 import * as bcrypt from "bcrypt";
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { User } from "src/users/interfaces/user.entity";
-import { UsersService } from "src/users/users.service";
 import { jwtConstants } from "./constants";
 import { IAuthToken } from "@realmsense/types";
+import { User } from "../users/interfaces/user.entity";
+import { UsersService } from "../users/users.service";
 
 @Injectable()
 export class AuthService {

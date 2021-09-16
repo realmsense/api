@@ -1,11 +1,10 @@
 import * as fs from "fs";
 import { ConflictException, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
+import { DeepPartial, Repository } from "typeorm";
 import { Build } from "./interfaces/build.entity";
 import { BuildType, CreateBuildTypeDTO } from "./interfaces/build_type.entity";
 import { User } from "src/users/interfaces/user.entity";
-import { DeepPartial } from "src/helpers";
 import { Permission } from "@realmsense/types";
 
 @Injectable()
