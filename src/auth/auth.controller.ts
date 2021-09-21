@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, Request, UseGuards } from "@nestjs/common";
 import { AuthService } from "./auth.service";
-import { SkipJWTAuth } from "./constants";
+import { SkipJWTAuth } from "./auth.constants";
 import { LocalAuthGuard } from "./guards/local-auth.guard";
 import { RegisterUserDto } from "./models/register-user.dto";
 import { IAuthToken } from "@realmsense/types";

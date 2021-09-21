@@ -4,7 +4,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { DeepPartial, Repository } from "typeorm";
 import { Build } from "./interfaces/build.entity";
 import { BuildType, CreateBuildTypeDTO } from "./interfaces/build_type.entity";
-import { User } from "src/users/interfaces/user.entity";
+import { User } from "../users/interfaces/user.entity";
 import { Permission } from "@realmsense/types";
 
 @Injectable()

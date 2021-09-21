@@ -1,7 +1,7 @@
 
 import { Injectable, CanActivate, ExecutionContext } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
-import { User } from "src/users/interfaces/user.entity";
+import { User } from "../../users/interfaces/user.entity";
 import { PERMISSION_KEY } from "./permission.decorator";
 import { Permission } from "@realmsense/types";
 

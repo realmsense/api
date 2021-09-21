@@ -4,7 +4,7 @@ import { diskStorage } from "multer";
 import { BuildsService } from "./builds.service";
 import { Build } from "./interfaces/build.entity";
 import { Response } from "express";
-import { RequirePermission } from "src/auth/permissions/permission.decorator";
+import { RequirePermission } from "../auth/permissions/permission.decorator";
 import { BuildType, CreateBuildTypeDTO } from "./interfaces/build_type.entity";
 import { Permission } from "@realmsense/types";
 
