@@ -1,6 +1,8 @@
-import { Body, Controller, Delete, Get, HttpCode, Patch, Put, Query, Sse, MessageEvent, Request } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, Patch, Put, Query, Sse, MessageEvent, Request, UseGuards } from "@nestjs/common";
 import { IRealm } from "@realmsense/types";
 import { Observable } from "rxjs";
+import { AuthKeyConstants, SkipJWTAuth } from "../../auth/auth.constants";
+import { RequireAuthKey } from "../../auth/guards/authkey.guard";
 import { RealmDto } from "./interfaces/realm.interface";
 import { RealmsService } from "./realms.service";
 
@@ -10,17 +12,23 @@ export class RealmsController {
     constructor(private realmService: RealmsService) { }
 
     @Delete("")
+    @RequireAuthKey(AuthKeyConstants.Realms)
+    @SkipJWTAuth()
     public deleteRealms(@Query("objectId") objectId?: number): void {
         return this.realmService.deleteRealms(objectId);
     }
 
     @Put("")
     @HttpCode(201)
+    @RequireAuthKey(AuthKeyConstants.Realms)
+    @SkipJWTAuth()
     public createRealm(@Body() realmDto: RealmDto): void {
         return this.realmService.createRealm(realmDto);
     }
 
     @Patch("")
+    @RequireAuthKey(AuthKeyConstants.Realms)
+    @SkipJWTAuth()
     public updateRealm(@Body() realmDto: RealmDto): void {
         return this.realmService.updateRealm(realmDto);
     }
