@@ -8,7 +8,7 @@ export class RealmsService {
     private realms: IRealm[] = [];
     private events = new Subject<MessageEvent>();
 
-    constructor( ) { }
+    constructor() { }
 
     public deleteRealms(objectId?: number): void {
         // no objectId, delete all realms
@@ -23,7 +23,7 @@ export class RealmsService {
         }
 
         const realm = this.realms.slice(foundIndex, 1)[0];
-        this.callEvent({...realm, event: "Deleted"});
+        this.callEvent({ ...realm, event: "Deleted" });
     }
 
     public createRealm(realm: IRealm): void {
@@ -37,7 +37,7 @@ export class RealmsService {
         }
 
         this.realms.push(realm);
-        this.callEvent({...realm, event: "Created"});
+        this.callEvent({ ...realm, event: "Created" });
     }
 
     public updateRealm(realm: IRealm): void {
@@ -47,7 +47,7 @@ export class RealmsService {
         }
 
         this.realms[foundIndex] = realm;
-        this.callEvent({...realm, event: "Updated"});
+        this.callEvent({ ...realm, event: "Updated" });
     }
 
     public getRealms(serverName?: string): IRealm[] {
@@ -63,9 +63,9 @@ export class RealmsService {
     }
 
     public callEvent(event: IRealmEvent): void {
-        this.events.next({data: event});
+        this.events.next({ data: event });
     }
-    
+
     public sendEvents(): Observable<MessageEvent> {
         return this.events.asObservable();
     }
