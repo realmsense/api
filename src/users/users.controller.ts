@@ -2,7 +2,7 @@ import { Body, Controller, Get, ParseIntPipe, Put, Query, Request } from "@nestj
 import { User } from "./interfaces/user.entity";
 import { UsersService } from "./users.service";
 import { Permission } from "@realmsense/types";
-import { RequirePermission } from "../auth/permissions/permission.decorator";
+import { RequirePermission } from "../auth/guards/permission.guard";
 
 @Controller("user")
 export class UsersController {
