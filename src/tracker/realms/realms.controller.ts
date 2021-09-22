@@ -3,7 +3,7 @@ import { IRealm } from "@realmsense/types";
 import { Observable } from "rxjs";
 import { AuthKeyConstants, SkipJWTAuth } from "../../auth/auth.constants";
 import { RequireAuthKey } from "../../auth/guards/authkey.guard";
-import { RealmDto } from "./interfaces/realm.interface";
+import { RealmDto } from "./interfaces/realm.dto";
 import { RealmsService } from "./realms.service";
 
 @Controller("tracker/realms")
