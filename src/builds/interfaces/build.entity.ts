@@ -1,8 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { IsInt, IsNotEmpty} from "class-validator";
 import { BuildType } from "./build_type.entity";
+import { Database } from "../../db.constants";
 
-@Entity()
+@Entity({ database: Database.Default })
 export class Build {
     @PrimaryGeneratedColumn()
     public id: number;

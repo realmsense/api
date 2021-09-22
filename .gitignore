@@ -1,4 +1,3 @@
 dist
 node_modules
 build_uploads
-ormconfig.json

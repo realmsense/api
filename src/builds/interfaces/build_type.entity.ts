@@ -2,8 +2,9 @@ import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { IsNotEmpty} from "class-validator";
 import { Build } from "./build.entity";
 import { OmitType } from "@nestjs/swagger";
+import { Database } from "../../db.constants";
 
-@Entity()
+@Entity({ database: Database.Default })
 export class BuildType {
 
     @PrimaryColumn()

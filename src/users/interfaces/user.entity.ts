@@ -1,8 +1,9 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { IsNotEmpty } from "class-validator";
 import { Permission, IUser } from "@realmsense/types";
+import { Database } from "../../db.constants";
 
-@Entity()
+@Entity({ database: Database.Customers })
 export class User implements IUser {
     @PrimaryGeneratedColumn()
     public id: number;
