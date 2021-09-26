@@ -22,7 +22,7 @@ export class RealmsService {
             throw new NotFoundException(`No realm was found with objectId ${objectId}`);
         }
 
-        const realm = this.realms.slice(foundIndex, 1)[0];
+        const realm = this.realms.splice(foundIndex, 1)[0];
         this.callEvent({ ...realm, event: "Deleted" });
     }
 
