@@ -88,13 +88,37 @@ export class PlayersService {
         return returnCharacter;
     }
 
-    public async searchAccounts(accountName: string): Promise<Account[]> {
+    public async searchPlayer(accountName: string): Promise<IPlayer[]> {
+
         const accounts = await this.accountRepository.find({
+            // relations: ["characters"],
             where: {
-                name: Like(`%${accountName}%`)
+                name: Raw(alias =>`LOWER(${alias}) Like :value`, { value: accountName.toLowerCase() })
             }
         });
-        return accounts;
+
+        const players: IPlayer[] = [];
+
+        for (const account of accounts) {
+
+            const character = await this.characterRepository.findOne({
+                where: {
+                    account: { playerID: account.playerID },
+                    alive: true
+                },
+                // relations: ["account"],
+                order: {
+                    updatedTime: "DESC"
+                }
+            });
+
+            players.push({
+                ...account,
+                ...character  
+            });
+        }
+
+        return players;
     }
 
     public async getCharacters(playerId: number, alive: boolean): Promise<Character[]> {

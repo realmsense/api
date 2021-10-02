@@ -1,11 +1,11 @@
 import { Body, Controller, Get, HttpCode, Put, Query} from "@nestjs/common";
 import { AuthKeyConstants, SkipJWTAuth } from "../../auth/auth.constants";
 import { RequireAuthKey } from "../../auth/guards/authkey.guard";
-import { Account } from "./entities/account.entity";
 import { PlayerDto } from "./dto/player.dto";
 import { PlayersService } from "./players.service";
 import { Character } from "./entities/character.entity";
 import { GetCharacterDTO } from "./dto/get-character.dto";
+import { IPlayer } from "@realmsense/types";
 
 @Controller("tracker/players")
 export class RealmsController {
@@ -20,11 +20,10 @@ export class RealmsController {
         return this.playersService.createPlayer(playerDto);
     }
 
-    @Get("searchAccounts")
-    @RequireAuthKey(AuthKeyConstants.Players)
+    @Get("search")
     @SkipJWTAuth()
-    public searchAccounts(@Query("name") accountName: string): Promise<Account[]> {
-        return this.playersService.searchAccounts(accountName);
+    public search(@Query("name") accountName: string): Promise<IPlayer[]> {
+        return this.playersService.searchPlayer(accountName);
     }
 
     @Get("characters")
