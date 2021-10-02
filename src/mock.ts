@@ -50,6 +50,7 @@ export function generateMockPlayers(amount: number): IPlayer[] {
     for (let i = 0; i < amount; i++) {
         const player: IPlayer = {
             name              : "Test Player",
+            updatedTime       : new Date(),
             nameChosen        : true,
             accountID         : randomNum(0, 1000).toString(),
             playerID          : randomNum(0, 1000),
@@ -111,7 +112,7 @@ export function generateMockPlayers(amount: number): IPlayer[] {
             tex1              : 21692546,
             tex2              : 33549261,
             objectType        : randomEnum(Classes),
-            server: {
+            server            : {
                 address: "127.0.0.1",
                 name: "Asia"
             },

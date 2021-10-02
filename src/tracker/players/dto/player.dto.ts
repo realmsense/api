@@ -7,6 +7,8 @@ import { ServerDTO } from "../../interfaces/server.dto";
 export class PlayerDto implements IPlayer {
     @IsNumber()
     public objectID: number;
+
+    public updatedTime = new Date();
     
     @IsNumber()
     public objectType: number;
