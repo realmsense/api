@@ -1,11 +1,11 @@
 import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm";
-import { IPlayer, IWorldPosData, GuildRank } from "@realmsense/types";
+import { GuildRank, IAccount } from "@realmsense/types";
 import { Character } from "./character.entity";
 import { Database } from "../../../db.constants";
 import { PlayerDto } from "../dto/player.dto";
 
 @Entity({ database: Database.Tracker })
-export class Account implements Partial<IPlayer> {
+export class Account implements IAccount {
     
     @PrimaryColumn()
     public playerID: number;
@@ -33,24 +33,24 @@ export class Account implements Partial<IPlayer> {
     @Column({ default: GuildRank.NoRank })
     public guildRank: GuildRank;
 
-    constructor(player?: PlayerDto) {
-        if (!player) return;
+    constructor(playerDto?: PlayerDto) {
+        if (!playerDto) return;
 
-        this.accountID       = player.accountID;
-        this.name            = player.name;
-        this.nameChosen      = player.nameChosen;
-        this.playerID        = player.playerID;
-        this.supporter       = player.supporter;
-        this.supporterPoints = player.supporterPoints;
-        this.numStars        = player.numStars;
-        this.accountFame     = player.accountFame;
-        this.credits         = player.credits;
-        this.fortuneToken    = player.fortuneToken;
-        this.currentFame     = player.currentFame;
-        this.legendaryRank   = player.legendaryRank;
-        this.forgeFire       = player.forgeFire;
-        this._119            = player._119;
-        this.guildName       = player.guildName;
-        this.guildRank       = player.guildRank;
+        this.accountID       = playerDto.accountID;
+        this.name            = playerDto.name;
+        this.nameChosen      = playerDto.nameChosen;
+        this.playerID        = playerDto.playerID;
+        this.supporter       = playerDto.supporter;
+        this.supporterPoints = playerDto.supporterPoints;
+        this.numStars        = playerDto.numStars;
+        this.accountFame     = playerDto.accountFame;
+        this.credits         = playerDto.credits;
+        this.fortuneToken    = playerDto.fortuneToken;
+        this.currentFame     = playerDto.currentFame;
+        this.legendaryRank   = playerDto.legendaryRank;
+        this.forgeFire       = playerDto.forgeFire;
+        this._119            = playerDto._119;
+        this.guildName       = playerDto.guildName;
+        this.guildRank       = playerDto.guildRank;
     }
 }

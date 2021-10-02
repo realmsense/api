@@ -1,11 +1,11 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
-import { IPlayer } from "@realmsense/types";
+import { ICharacter, IServer } from "@realmsense/types";
 import { Account } from "./account.entity";
 import { Database } from "../../../db.constants";
 import { PlayerDto } from "../dto/player.dto";
 
 @Entity({ database: Database.Tracker })
-export class Character implements Partial<IPlayer> {
+export class Character implements ICharacter {
 
     @PrimaryGeneratedColumn()
     public id?: number;
@@ -76,55 +76,55 @@ export class Character implements Partial<IPlayer> {
     @Column({ default: 0 }) public tex1   : number;
     @Column({ default: 0 }) public tex2   : number;
 
-    constructor(player?: PlayerDto) {
-        if (!player) return;
+    constructor(playerDto?: PlayerDto) {
+        if (!playerDto) return;
 
-        this.objectType         = player.objectType;
+        this.objectType         = playerDto.objectType;
         this.alive              = true;
-        this.level              = player.level;
-        this.exp                = player.exp;
-        this.nextLevelExp       = player.nextLevelExp;
-        this.nextClassQuestFame = player.nextClassQuestFame;
-        this.xpBoosted          = player.xpBoosted;
-        this.xpTimer            = player.xpTimer;
-        this.lootDropTimer      = player.lootDropTimer;
-        this.lootTierTimer      = player.lootTierTimer;
-        this.maxHP              = player.maxHP;               // Stats
-        this.hp                 = player.hp;
-        this.maxMP              = player.maxMP;
-        this.mp                 = player.mp;
-        this.dexterity          = player.dexterity;
-        this.attack             = player.attack;
-        this.defense            = player.defense;
-        this.vitality           = player.vitality;
-        this.wisdom             = player.wisdom;
-        this.speed              = player.speed;
-        this.boostMaxMP         = player.boostMaxMP;          // Stats - boost
-        this.boostMaxHP         = player.boostMaxHP;
-        this.boostDexterity     = player.boostDexterity;
-        this.boostAttack        = player.boostAttack;
-        this.boostDefense       = player.boostDefense;
-        this.boostSpeed         = player.boostSpeed;
-        this.boostVitality      = player.boostVitality;
-        this.boostWisdom        = player.boostWisdom;
-        this.projectileSpeed    = player.projectileSpeed;
-        this.projectileLife     = player.projectileLife;
-        this.exaltedBonusDamage = player.exaltedBonusDamage;  // Stats - exalts
-        this.exaltedHP          = player.exaltedHP;
-        this.exaltedMP          = player.exaltedMP;
-        this.exaltedDexterity   = player.exaltedDexterity;
-        this.exaltedAttack      = player.exaltedAttack;
-        this.exaltedDefense     = player.exaltedDefense;
-        this.exaltedSpeed       = player.exaltedSpeed;
-        this.exaltedVitality    = player.exaltedVitality;
-        this.exaltedWisdom      = player.exaltedWisdom;
-        this.potions            = player.potions;             // Inventory 
-        this.inventory          = player.inventory;
-        this.backpack           = player.backpack;
-        this.hasBackpack        = player.hasBackpack;
-        this.size               = player.size;                // Sprite
-        this.texture            = player.texture;
-        this.tex1               = player.tex1;
-        this.tex2               = player.tex2;
+        this.level              = playerDto.level;
+        this.exp                = playerDto.exp;
+        this.nextLevelExp       = playerDto.nextLevelExp;
+        this.nextClassQuestFame = playerDto.nextClassQuestFame;
+        this.xpBoosted          = playerDto.xpBoosted;
+        this.xpTimer            = playerDto.xpTimer;
+        this.lootDropTimer      = playerDto.lootDropTimer;
+        this.lootTierTimer      = playerDto.lootTierTimer;
+        this.maxHP              = playerDto.maxHP;               // Stats
+        this.hp                 = playerDto.hp;
+        this.maxMP              = playerDto.maxMP;
+        this.mp                 = playerDto.mp;
+        this.dexterity          = playerDto.dexterity;
+        this.attack             = playerDto.attack;
+        this.defense            = playerDto.defense;
+        this.vitality           = playerDto.vitality;
+        this.wisdom             = playerDto.wisdom;
+        this.speed              = playerDto.speed;
+        this.boostMaxMP         = playerDto.boostMaxMP;          // Stats - boost
+        this.boostMaxHP         = playerDto.boostMaxHP;
+        this.boostDexterity     = playerDto.boostDexterity;
+        this.boostAttack        = playerDto.boostAttack;
+        this.boostDefense       = playerDto.boostDefense;
+        this.boostSpeed         = playerDto.boostSpeed;
+        this.boostVitality      = playerDto.boostVitality;
+        this.boostWisdom        = playerDto.boostWisdom;
+        this.projectileSpeed    = playerDto.projectileSpeed;
+        this.projectileLife     = playerDto.projectileLife;
+        this.exaltedBonusDamage = playerDto.exaltedBonusDamage;  // Stats - exalts
+        this.exaltedHP          = playerDto.exaltedHP;
+        this.exaltedMP          = playerDto.exaltedMP;
+        this.exaltedDexterity   = playerDto.exaltedDexterity;
+        this.exaltedAttack      = playerDto.exaltedAttack;
+        this.exaltedDefense     = playerDto.exaltedDefense;
+        this.exaltedSpeed       = playerDto.exaltedSpeed;
+        this.exaltedVitality    = playerDto.exaltedVitality;
+        this.exaltedWisdom      = playerDto.exaltedWisdom;
+        this.potions            = playerDto.potions;             // Inventory 
+        this.inventory          = playerDto.inventory;
+        this.backpack           = playerDto.backpack;
+        this.hasBackpack        = playerDto.hasBackpack;
+        this.size               = playerDto.size;                // Sprite
+        this.texture            = playerDto.texture;
+        this.tex1               = playerDto.tex1;
+        this.tex2               = playerDto.tex2;
     }
 }
