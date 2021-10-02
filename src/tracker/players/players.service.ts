@@ -112,10 +112,15 @@ export class PlayersService {
                 }
             });
 
-            players.push({
+            const player: IPlayer = {
                 ...account,
                 ...character  
-            });
+            };
+
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            //@ts-ignore
+            player.updatedTime = player.updatedTime.getTime();
+            players.push(player);
         }
 
         return players;
