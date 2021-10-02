@@ -10,6 +10,8 @@ export class Account implements IAccount {
     @PrimaryColumn()
     public playerID: number;
 
+    @Column({ type: "timestamp" }) public updatedTime: Date;
+
     @OneToMany(() => Character, (character) => character.account, { cascade: true })
     public characters?: Character[];
 
@@ -37,6 +39,7 @@ export class Account implements IAccount {
         if (!playerDto) return;
 
         this.accountID       = playerDto.accountID;
+        this.updatedTime     = new Date();
         this.name            = playerDto.name;
         this.nameChosen      = playerDto.nameChosen;
         this.playerID        = playerDto.playerID;

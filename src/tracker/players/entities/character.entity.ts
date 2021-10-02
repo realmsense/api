@@ -13,11 +13,19 @@ export class Character implements ICharacter {
     @Column()
     public objectType: number;
 
+    @Column({ type: "timestamp" }) public updatedTime: Date;
+
     @ManyToOne(() => Account, (account) => account.characters)
     public account?: Account;
 
     @Column({ default: true })
     public alive: boolean;
+
+    @Column({ type: "simple-json" })
+    public server: IServer;
+    
+    @Column()
+    public location: string;
 
     // XP
     @Column({ default: 0 }) public level             : number;
@@ -80,7 +88,10 @@ export class Character implements ICharacter {
         if (!playerDto) return;
 
         this.objectType         = playerDto.objectType;
+        this.updatedTime        = new Date(),
         this.alive              = true;
+        this.server             = playerDto.server;
+        this.location           = playerDto.location;
         this.level              = playerDto.level;
         this.exp                = playerDto.exp;
         this.nextLevelExp       = playerDto.nextLevelExp;
