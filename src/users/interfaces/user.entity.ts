@@ -25,4 +25,8 @@ export class User implements IUser {
 
     @Column({ type: "timestamp" })
     public createdAt: Date;
+
+    @Column({ type: "simple-json", default: "[]" })
+    @IsNotEmpty()
+    public watchList: string[];
 }

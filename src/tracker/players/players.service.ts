@@ -5,6 +5,8 @@ import { Account } from "./entities/account.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Raw, Repository } from "typeorm";
 import { Character } from "./entities/character.entity";
+import { User } from "../../users/interfaces/user.entity";
+import { WatchListDTO } from "./dto/watchlist.dto";
 
 @Injectable()
 export class PlayersService {
@@ -14,6 +16,8 @@ export class PlayersService {
         private accountRepository: Repository<Account>,
         @InjectRepository(Character)
         private characterRepository: Repository<Character>,
+        @InjectRepository(User)
+        private userRepository: Repository<User>,
     ) { }
 
     public async createPlayer(playerDto: PlayerDto): Promise<void> {
@@ -138,4 +142,26 @@ export class PlayersService {
         });
         return characters;
     }
+
+    public async addToWatchList(user: User, watchListDTO: WatchListDTO): Promise<string[]> {
+        if (user.watchList.includes(watchListDTO.playerName)) {
+            return user.watchList;
+        }
+
+        user.watchList.push(watchListDTO.playerName);
+        await this.userRepository.save(user);
+        return user.watchList;
+    }
+
+    public async removeFromWatchList(user: User, watchListDTO: WatchListDTO): Promise<string[]> {
+        const index = user.watchList.findIndex((value) => value == watchListDTO.playerName);
+        if (index == -1) {
+            return user.watchList;
+        }
+
+        user.watchList.splice(index, 1);
+        await this.userRepository.save(user);
+        return user.watchList;
+    }
+
 }
