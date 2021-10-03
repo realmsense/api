@@ -33,6 +33,7 @@ export class UsersService {
     public async findAll(removePass = true): Promise<User[]> {
         const users = await this.usersRepository.find();
         if (removePass) {
+            //@ts-ignore
             users.forEach((user) => delete user.password);
         }
         return users;

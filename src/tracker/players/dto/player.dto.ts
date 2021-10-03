@@ -5,8 +5,8 @@ import { WorldPosDataDTO } from "../../interfaces/worldposdata.dto";
 import { ServerDTO } from "../../interfaces/server.dto";
 
 export class PlayerDto implements IPlayer {
-    @IsNumber()
-    public objectID: number;
+    // @IsNumber()
+    public objectID?: number;
 
     public updatedTime = new Date();
     
@@ -21,10 +21,10 @@ export class PlayerDto implements IPlayer {
     @IsString()
     public location: string;
 
-    @IsNotEmpty()
-    @ValidateNested()
-    @Type(() => WorldPosDataDTO)
-    public pos: IWorldPosData;
+    // @IsNotEmpty()
+    // @ValidateNested()
+    // @Type(() => WorldPosDataDTO)
+    public pos?: IWorldPosData;
 
     // Account Data
     @IsString()

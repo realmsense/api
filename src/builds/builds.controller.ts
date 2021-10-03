@@ -55,8 +55,8 @@ export class BuildsController {
     public async find(
         @Request() request: any,
         @Query("id", ParseIntPipe) id: number
-    ): Promise<Build> {
-        return this.buildsService.getBuilds(request.user, id);
+    ): Promise<Build | undefined> {
+        return this.buildsService.getBuild(request.user, id);
     }
 
     @Get("all")
@@ -85,8 +85,7 @@ export class BuildsController {
     }
 
     @Get("type")
-    public async findType(@Query("name") name: string): Promise<BuildType> {
-        console.log(name);
+    public async findType(@Query("name") name: string): Promise<BuildType | undefined> {
         return this.buildsService.findBuildType(name);
     }
 

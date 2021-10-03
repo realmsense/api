@@ -45,7 +45,7 @@ export class PlayersService {
             }
         });
 
-        let returnCharacter: Character = null;
+        let returnCharacter: Character | null = null;
 
         for (const character of characters) {
 
@@ -111,6 +111,8 @@ export class PlayersService {
                     updatedTime: "DESC"
                 }
             });
+            
+            if (!character) continue;
 
             const player: IPlayer = {
                 ...account,

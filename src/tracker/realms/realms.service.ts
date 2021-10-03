@@ -58,7 +58,7 @@ export class RealmsService {
         return realms;
     }
 
-    public findRealm(objectId: number): IRealm {
+    public findRealm(objectId: number): IRealm | undefined {
         return this.realms.find((realm) => realm.objectID == objectId);
     }
 
