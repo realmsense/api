@@ -20,9 +20,8 @@ export class RealmsController {
         return this.playersService.createPlayer(playerDto);
     }
 
-    @Get("search")
-    @SkipJWTAuth()
-    public search(@Query("name") accountName: string): Promise<IPlayer[]> {
+    @Get("")
+    public searchPlayers(@Query("name") accountName: string): Promise<IPlayer[]> {
         return this.playersService.searchPlayer(accountName);
     }
 

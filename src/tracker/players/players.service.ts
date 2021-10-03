@@ -93,7 +93,7 @@ export class PlayersService {
         const accounts = await this.accountRepository.find({
             // relations: ["characters"],
             where: {
-                name: Raw(alias =>`LOWER(${alias}) Like :value`, { value: accountName.toLowerCase() })
+                name: Raw(alias =>`LOWER(${alias}) LIKE :value`, { value: `%${accountName.toLowerCase()}%` })
             }
         });
 
