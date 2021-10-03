@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { PlayerDto } from "./dto/player.dto";
-import { IPlayer } from "@realmsense/types";
 import { Account } from "./entities/account.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Raw, Repository } from "typeorm";
 import { Character } from "./entities/character.entity";
 import { User } from "../../users/interfaces/user.entity";
 import { WatchListDTO } from "./dto/watchlist.dto";
+import { IPlayer } from "../../../types/src";
 
 @Injectable()
 export class PlayersService {

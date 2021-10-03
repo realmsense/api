@@ -1,8 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
-import { ICharacter, IServer } from "@realmsense/types";
 import { Account } from "./account.entity";
 import { Database } from "../../../db.constants";
 import { PlayerDto } from "../dto/player.dto";
+import { ICharacter, IServer } from "../../../../types/src";
 
 @Entity({ database: Database.Tracker })
 export class Character implements ICharacter {

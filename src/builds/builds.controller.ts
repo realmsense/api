@@ -5,8 +5,8 @@ import { BuildsService } from "./builds.service";
 import { Build } from "./interfaces/build.entity";
 import { Response } from "express";
 import { BuildType, CreateBuildTypeDTO } from "./interfaces/build_type.entity";
-import { Permission } from "@realmsense/types";
 import { RequirePermission } from "../auth/guards/permission.guard";
+import { Permission } from "../../types/src";
 
 @Controller("builds")
 export class BuildsController {

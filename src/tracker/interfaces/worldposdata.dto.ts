@@ -1,5 +1,5 @@
 import { IsNumber } from "class-validator";
-import { IWorldPosData } from "@realmsense/types";
+import { IWorldPosData } from "../../../types/src";
 
 export class WorldPosDataDTO implements IWorldPosData {
     @IsNumber()

@@ -1,8 +1,8 @@
 import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm";
-import { GuildRank, IAccount } from "@realmsense/types";
 import { Character } from "./character.entity";
 import { Database } from "../../../db.constants";
 import { PlayerDto } from "../dto/player.dto";
+import { GuildRank, IAccount } from "../../../../types/src";
 
 @Entity({ database: Database.Tracker })
 export class Account implements IAccount {

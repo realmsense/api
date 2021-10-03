@@ -5,9 +5,9 @@ import { PlayerDto } from "./dto/player.dto";
 import { PlayersService } from "./players.service";
 import { Character } from "./entities/character.entity";
 import { GetCharacterDTO } from "./dto/get-character.dto";
-import { IPlayer } from "@realmsense/types";
 import { User } from "../../users/interfaces/user.entity";
 import { WatchListDTO } from "./dto/watchlist.dto";
+import { IPlayer } from "../../../types/src";
 
 @Controller("tracker/players")
 export class RealmsController {

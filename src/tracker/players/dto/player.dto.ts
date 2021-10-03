@@ -1,8 +1,8 @@
 import { Type } from "class-transformer";
 import { IsNotEmpty, ValidateNested, IsNumber, IsString } from "class-validator";
-import { GuildRank, IPlayer, IServer, IWorldPosData } from "@realmsense/types";
 import { WorldPosDataDTO } from "../../interfaces/worldposdata.dto";
 import { ServerDTO } from "../../interfaces/server.dto";
+import { IPlayer, IServer, IWorldPosData, GuildRank } from "../../../../types/src";
 
 export class PlayerDto implements IPlayer {
     // @IsNumber()

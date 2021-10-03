@@ -5,7 +5,7 @@ import { Repository } from "typeorm";
 import { Build } from "./interfaces/build.entity";
 import { BuildType, CreateBuildTypeDTO } from "./interfaces/build_type.entity";
 import { User } from "../users/interfaces/user.entity";
-import { Permission } from "@realmsense/types";
+import { Permission } from "../../types/src";
 
 @Injectable()
 export class BuildsService {
