@@ -2,9 +2,9 @@ import * as bcrypt from "bcrypt";
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { jwtConstants } from "./auth.constants";
-import { IAuthToken } from "@realmsense/types";
 import { User } from "../users/interfaces/user.entity";
 import { UsersService } from "../users/users.service";
+import { IAuthToken } from "../../types/src";
 
 @Injectable()
 export class AuthService {
@@ -14,9 +14,10 @@ export class AuthService {
         private jwtService: JwtService
     ) { }
 
-    public async validateUser(username: string, password: string): Promise<User> {
+    public async validateUser(username: string, password: string): Promise<User | null> {
         const user = await this.usersService.findOne(username);
         if (user && bcrypt.compareSync(password, user.password)) {
+            // @ts-ignore
             delete user.password; // remove password from user
             return user;
         }

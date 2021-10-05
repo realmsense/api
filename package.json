@@ -5,6 +5,7 @@
   "author": "Extacy",
   "private": true,
   "license": "UNLICENSED",
+  "main": "dist/src/main.js",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",

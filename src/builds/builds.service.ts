@@ -1,11 +1,11 @@
 import * as fs from "fs";
 import { ConflictException, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { DeepPartial, Repository } from "typeorm";
+import { Repository } from "typeorm";
 import { Build } from "./interfaces/build.entity";
 import { BuildType, CreateBuildTypeDTO } from "./interfaces/build_type.entity";
 import { User } from "../users/interfaces/user.entity";
-import { Permission } from "@realmsense/types";
+import { Permission } from "../../types/src";
 
 @Injectable()
 export class BuildsService {
@@ -29,12 +29,12 @@ export class BuildsService {
             throw new ConflictException(`Unable to find Build Type '${buildTypeName}'`);
         }
 
-        const insertResult = await this.buildsRepository.insert(build);
-        return this.buildsRepository.findOne({id: insertResult.identifiers[0].id});
+        await this.buildsRepository.insert(build);
+        return build;
     }
 
     public async getBuildFile(user: User, buildId: number): Promise<fs.ReadStream> {
-        const build = await this.getBuilds(user, buildId);
+        const build = await this.getBuild(user, buildId);
         if (!build) {
             throw new NotFoundException(`No build found with ID ${buildId}`);
         }
@@ -47,7 +47,7 @@ export class BuildsService {
     }
 
     public async disable(user: User, buildId: number): Promise<Build> {
-        const build = await this.getBuilds(user, buildId);
+        const build = await this.getBuild(user, buildId);
         if (!build) {
             throw new NotFoundException(`No build found with ID ${buildId}`);
         }
@@ -60,60 +60,56 @@ export class BuildsService {
         return this.buildsRepository.find();
     }
 
-
-    public async getBuilds(user: User): Promise<Build[]>;
-    public async getBuilds(user: User, id: number): Promise<Build>;
-    public async getBuilds(user: User, id: number = undefined): Promise<Build[] | Build> {
-
-        const searchBuild: DeepPartial<Build> = {
-            type: { name: "" },
-            enabled: true
-        };
-
-        if (id != undefined) {
-            searchBuild.id = id;
-        }
-
+    private async getAvailableBuilds(user: User): Promise<Build[]> {
         let builds: Build[] = [];
 
         // Private Testing
         if (user.permissions.includes(Permission.PRIVATE_TESTING)) {
-            searchBuild.type.name = "Private Testing";
-            const privateTestingBuilds = await this.buildsRepository.find(searchBuild);
+            const privateTestingBuilds = await this.buildsRepository.find({ where: { type: { name: "Private Testing" }, enabled: true } });
             builds = [...builds, ...privateTestingBuilds];
         }
 
         // Paid Builds
         if (
+            // TODO: check if user has an active subscription, or if they are bypassing the check.
             user.permissions.includes(Permission.BYPASS_SUBSCRIPTION)
-            // TODO: Check if user has an active subscription
         ) {
-            searchBuild.type.name = "Stable";
-            const stableBuilds = await this.buildsRepository.find(searchBuild);
+            const stableBuilds = await this.buildsRepository.find({ where: { type: { name: "Stable" }, enabled: true } });
             builds = [...builds, ...stableBuilds];
 
-            searchBuild.type.name = "Testing";
-            const testingBuilds = await this.buildsRepository.find(searchBuild);
+            const testingBuilds = await this.buildsRepository.find({ where: { type: { name: "Testing" }, enabled: true } });
             builds = [...builds, ...testingBuilds];
         }
 
         // Free Trial
-        searchBuild.type.name = "Free Trial";
-        const freeTrialBuilds = await this.buildsRepository.find(searchBuild);
+        const freeTrialBuilds = await this.buildsRepository.find({ where: { type: { name: "Free Trial" }, enabled: true } });
         builds = [...builds, ...freeTrialBuilds];
 
+        // Remove Webhooks from non admins
         if (!user.permissions.includes(Permission.MANAGE_BUILDS)) {
             for (const build of builds) {
+                //@ts-ignore
                 delete build.type.webhook_url;
+                //@ts-ignore
                 delete build.type.embed_template;
             }
         }
 
-        if (id && builds.length == 1) {
-            return builds[0];
-        }
-
         return builds;
+    }
+
+    public async getBuilds(user: User): Promise<Build[]> {
+        return this.getAvailableBuilds(user);
+    }
+
+    public async getBuild(user: User, id: number): Promise<Build | undefined> {
+        const builds = await this.getAvailableBuilds(user);
+        for (const build of builds) {
+            if (build.id == id) {
+                return build;
+            }
+        }
+        return undefined;
     }
 
     public createType(createBuildType: CreateBuildTypeDTO): void {
@@ -129,7 +125,7 @@ export class BuildsService {
         return this.buildsTypesRepository.find();
     }
 
-    public findBuildType(name: string): Promise<BuildType> {
+    public findBuildType(name: string): Promise<BuildType | undefined> {
         return this.buildsTypesRepository.findOne({ name });
     }
 }

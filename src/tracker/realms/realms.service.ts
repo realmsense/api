@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, MessageEvent } from "@nestjs/common";
-import { IRealm, IRealmEvent } from "@realmsense/types";
 import { Observable, Subject } from "rxjs";
+import { IRealm, IRealmEvent } from "../../../types/src";
 
 @Injectable()
 export class RealmsService {
@@ -58,7 +58,7 @@ export class RealmsService {
         return realms;
     }
 
-    public findRealm(objectId: number): IRealm {
+    public findRealm(objectId: number): IRealm | undefined {
         return this.realms.find((realm) => realm.objectID == objectId);
     }
 

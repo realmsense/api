@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator";
-import { IServer } from "@realmsense/types";
+import { IServer } from "../../../types/src";
 
 export class ServerDTO implements IServer {
     @IsNotEmpty()

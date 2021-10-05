@@ -13,4 +13,5 @@ export const SkipJWTAuth = () => SetMetadata(SKIP_JWT_KEY, true);
 
 export const AuthKeyConstants = {
     Realms: "gBjt8d2SqrCyLKMLaVEsZJ2E8DuU7Raz",
+    Players: "7V2e6S2M6uAqujm8rhHZxXE4izegc87p"
 };

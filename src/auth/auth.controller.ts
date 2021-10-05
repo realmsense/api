@@ -3,7 +3,7 @@ import { AuthService } from "./auth.service";
 import { SkipJWTAuth } from "./auth.constants";
 import { LocalAuthGuard } from "./guards/local-auth.guard";
 import { RegisterUserDto } from "./models/register-user.dto";
-import { IAuthToken } from "@realmsense/types";
+import { IAuthToken } from "../../types/src";
 
 @Controller("auth")
 export class AuthController {

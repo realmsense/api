@@ -1,8 +1,8 @@
 import { Body, Controller, Get, ParseIntPipe, Put, Query, Request } from "@nestjs/common";
 import { User } from "./interfaces/user.entity";
 import { UsersService } from "./users.service";
-import { Permission } from "@realmsense/types";
 import { RequirePermission } from "../auth/guards/permission.guard";
+import { Permission } from "../../types/src";
 
 @Controller("user")
 export class UsersController {

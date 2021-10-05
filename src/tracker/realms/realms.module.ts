@@ -14,11 +14,7 @@ import { RealmsService } from "./realms.service";
         {
             provide: APP_GUARD,
             useClass: JwtAuthGuard
-        },
-        {
-            provide: APP_GUARD,
-            useClass: AuthKeyGuard
-        },
+        }
     ],
 })
 export class RealmsModule { }
