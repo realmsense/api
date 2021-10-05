@@ -20,6 +20,10 @@ import { BuildType } from "./interfaces/build_type.entity";
         {
             provide: APP_GUARD,
             useClass: JwtAuthGuard
+        },
+        {
+            provide: APP_GUARD,
+            useClass: PermissionGuard
         }
     ],
 })
