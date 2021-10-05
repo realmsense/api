@@ -50,7 +50,6 @@ export function generateMockPlayers(amount: number): IPlayer[] {
     for (let i = 0; i < amount; i++) {
         const player: IPlayer = {
             name              : "Test Player",
-            updatedTime       : new Date(),
             nameChosen        : true,
             accountID         : randomNum(0, 1000).toString(),
             playerID          : randomNum(0, 1000),
