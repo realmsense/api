@@ -5,7 +5,7 @@ import { JwtAuthGuard } from "../../auth/guards/jwt-auth.guard";
 import { User } from "../../users/interfaces/user.entity";
 import { Account } from "./entities/account.entity";
 import { Character } from "./entities/character.entity";
-import { RealmsController } from "./players.controller";
+import { PlayersController } from "./players.controller";
 import { PlayersService } from "./players.service";
 
 @Module({
@@ -15,7 +15,7 @@ import { PlayersService } from "./players.service";
         TypeOrmModule.forFeature([User]),
     ],
     exports: [PlayersService],
-    controllers: [RealmsController],
+    controllers: [PlayersController],
     providers: [
         PlayersService,
         {

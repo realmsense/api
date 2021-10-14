@@ -10,7 +10,7 @@ import { WatchListDTO } from "./dto/watchlist.dto";
 import { IPlayer } from "../../../types/src";
 
 @Controller("tracker/players")
-export class RealmsController {
+export class PlayersController {
 
     constructor(private playersService: PlayersService) { }
 
