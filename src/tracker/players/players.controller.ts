@@ -28,8 +28,6 @@ export class PlayersController {
     }
 
     @Get("characters")
-    @RequireAuthKey(AuthKeyConstants.Players)
-    @SkipJWTAuth()
     public getCharacters(@Body() getCharactersDto: GetCharacterDTO): Promise<Character[]> {
         return this.playersService.getCharacters(getCharactersDto.playerId, getCharactersDto.alive);
     }

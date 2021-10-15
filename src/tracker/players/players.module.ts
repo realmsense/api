@@ -1,7 +1,5 @@
 import { Module } from "@nestjs/common";
-import { APP_GUARD } from "@nestjs/core";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { JwtAuthGuard } from "../../auth/guards/jwt-auth.guard";
 import { User } from "../../users/interfaces/user.entity";
 import { Account } from "./entities/account.entity";
 import { Character } from "./entities/character.entity";
@@ -17,11 +15,7 @@ import { PlayersService } from "./players.service";
     exports: [PlayersService],
     controllers: [PlayersController],
     providers: [
-        PlayersService,
-        {
-            provide: APP_GUARD,
-            useClass: JwtAuthGuard
-        }
+        PlayersService
     ],
 })
 export class PlayersModule { }
