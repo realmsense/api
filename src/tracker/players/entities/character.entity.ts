@@ -13,7 +13,7 @@ export class Character implements ICharacter {
     @Column()
     public objectType: number;
 
-    @Column({ type: "timestamp" }) public updatedTime: Date;
+    @Column({ type: "timestamp" }) public updatedTime: number;
 
     @ManyToOne(() => Account, (account) => account.characters)
     public account?: Account;
@@ -88,7 +88,7 @@ export class Character implements ICharacter {
         if (!playerDto) return;
 
         this.objectType         = playerDto.objectType;
-        this.updatedTime        = new Date(),
+        this.updatedTime        = Date.now(),
         this.alive              = true;
         this.server             = playerDto.server;
         this.location           = playerDto.location;
