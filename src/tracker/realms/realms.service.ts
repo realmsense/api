@@ -6,7 +6,7 @@ import { IRealm, IRealmEvent } from "../../../types/src";
 export class RealmsService {
 
     private realms: IRealm[] = [];
-    private events = new Subject<MessageEvent>();
+    public readonly events = new Subject<MessageEvent>();
 
     constructor() { }
 
@@ -60,6 +60,10 @@ export class RealmsService {
 
     public findRealm(objectId: number): IRealm | undefined {
         return this.realms.find((realm) => realm.objectID == objectId);
+    }
+
+    public searchRealm(serverName: string, realmName: string): IRealm | undefined {
+        return this.realms.find((value) => value.server.name == serverName && value.name?.toLowerCase() == realmName.toLowerCase());
     }
 
     public callEvent(event: IRealmEvent): void {

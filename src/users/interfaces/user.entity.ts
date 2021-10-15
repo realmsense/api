@@ -29,4 +29,7 @@ export class User implements IUser {
     @Column({ type: "simple-json", default: "[]" })
     @IsNotEmpty()
     public watchList: string[];
+
+    @Column()
+    public discordId: string;
 }
