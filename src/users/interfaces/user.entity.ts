@@ -7,6 +7,10 @@ import { IUser, Permission } from "../../../types/src";
 export class User implements IUser {
     @PrimaryGeneratedColumn()
     public id: number;
+    
+    @Column()
+    @IsNotEmpty()
+    public email: string;
 
     @Column()
     @IsNotEmpty()
