@@ -34,6 +34,17 @@ export class AuthService {
         return authToken;
     }
 
+    public async changePassword(user: User, oldPassword: string, newPassword: string): Promise<boolean> {
+        const validOldPass = await this.validateUser(user.username, oldPassword);
+        if (!validOldPass) {
+            return false;
+        }
+
+        user.password = await this.hashPassword(newPassword);
+        await this.usersService.update(user.id, user);
+        return true;
+    }
+
     private async validateUsernamePassword(username: string, password: string): Promise<void> {
         // Username must only be letters and numbers
         const alphanumeric = /^[a-z0-9]+$/i;
@@ -58,11 +69,13 @@ export class AuthService {
         }
     }
 
+    private async hashPassword(password: string): Promise<string> {
+        return await bcrypt.hash(password, 10);
+    }
+
     public async register(username: string, password: string): Promise<void> {
-
         await this.validateUsernamePassword(username, password);
-
-        const hash = await bcrypt.hash(password, 10);
+        const hash = await this.hashPassword(password);
 
         const user = new User();
         user.username = username;
