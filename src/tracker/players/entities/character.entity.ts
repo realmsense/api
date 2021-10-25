@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 import { Account } from "./account.entity";
-import { Database } from "../../../db.constants";
+import { Database } from "../../../secrets";
 import { PlayerDto } from "../dto/player.dto";
 import { ICharacter, IServer } from "../../../../types/src";
 

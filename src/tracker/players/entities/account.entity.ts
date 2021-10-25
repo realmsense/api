@@ -1,6 +1,6 @@
 import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm";
 import { Character } from "./character.entity";
-import { Database } from "../../../db.constants";
+import { Database } from "../../../secrets";
 import { PlayerDto } from "../dto/player.dto";
 import { GuildRank, IAccount } from "../../../../types/src";
 

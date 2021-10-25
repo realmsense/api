@@ -8,7 +8,7 @@ import { AuthKeyGuard } from "./auth/guards/authkey.guard";
 import { JwtAuthGuard } from "./auth/guards/jwt-auth.guard";
 import { PermissionGuard } from "./auth/guards/permission.guard";
 import { BuildsModule } from "./builds/builds.module";
-import { DatabaseConfig } from "./db.constants";
+import { DatabaseConfig } from "./secrets";
 import { DiscordModule } from "./tracker/discord/discord.module";
 import { PlayersModule } from "./tracker/players/players.module";
 import { RealmsModule } from "./tracker/realms/realms.module";

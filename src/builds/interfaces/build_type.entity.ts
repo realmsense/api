@@ -2,7 +2,7 @@ import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { IsNotEmpty} from "class-validator";
 import { Build } from "./build.entity";
 import { OmitType } from "@nestjs/swagger";
-import { Database } from "../../db.constants";
+import { Database } from "../../secrets";
 
 @Entity({ database: Database.Default })
 export class BuildType {

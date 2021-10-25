@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { IsNotEmpty } from "class-validator";
-import { Database } from "../../db.constants";
+import { Database } from "../../secrets";
 import { IUser, Permission } from "../../../types/src";
+import { DiscordLink } from "./discord-link.entity";
 
 @Entity({ database: Database.Customers })
 export class User implements IUser {
@@ -11,6 +12,10 @@ export class User implements IUser {
     @Column()
     @IsNotEmpty()
     public email: string;
+    
+    @OneToOne(() => DiscordLink)
+    @JoinColumn()
+    public discordLink: DiscordLink;
 
     @Column()
     @IsNotEmpty()
@@ -33,7 +38,4 @@ export class User implements IUser {
     @Column({ type: "simple-json", default: "[]" })
     @IsNotEmpty()
     public watchList: string[];
-
-    @Column()
-    public discordId: string;
 }

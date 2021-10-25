@@ -1,7 +1,14 @@
-import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
+import axios from "axios";
+import { BadRequestException, HttpException, HttpStatus, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { Response } from "express";
 import { Repository } from "typeorm";
+import { Discord } from "../secrets";
 import { User } from "./interfaces/user.entity";
+import { RESTPostOAuth2AccessTokenResult, APIUser } from "discord-api-types/v9";
+import qs from "qs";
+import { DiscordLink } from "./interfaces/discord-link.entity";
+
 
 @Injectable()
 export class UsersService {
@@ -9,10 +16,76 @@ export class UsersService {
     constructor(
         @InjectRepository(User)
         private usersRepository: Repository<User>,
+        @InjectRepository(DiscordLink)
+        private discordLinkRepository: Repository<DiscordLink>,
     ) { }
 
+    public redirectDiscordOAuth(res: Response): void {
+        // TODO: generate and store a `state` variable
+        const bruh = new URL(Discord.API_URL + "/oauth2/authorize");
+        bruh.searchParams.append("client_id", "880231286579527680");
+        bruh.searchParams.append("redirect_uri", "http://127.0.0.1:4200/dashboard/profile/link-discord");
+        bruh.searchParams.append("response_type", "code");
+        bruh.searchParams.append("scope", "identify");
+        res.redirect(bruh.toString());
+    }
+
+    public async linkDiscord(user: User, oauthCode: string): Promise<void> {
+        // TODO: veriify `state` (also need to add to DTO)
+
+        // Exchange oauth code for access token 
+        const tokenResponse = await axios.post<RESTPostOAuth2AccessTokenResult>(Discord.API_URL + "/oauth2/token",
+            qs.stringify({
+                "client_id"    : Discord.ClientID,
+                "client_secret": Discord.ClientSecret,
+                "grant_type"   : "authorization_code",
+                "code"         : oauthCode,
+                "redirect_uri" : Discord.RedirectURI,
+            })
+        ).catch((error) => {
+            throw new HttpException(error.response.data.error_description, HttpStatus.BAD_REQUEST);
+        });
+
+        // Get profile
+        const accessToken = tokenResponse.data;
+        const profileResponse = await axios.get<APIUser>(Discord.API_URL + "/users/@me", {
+            headers: {
+                "Authorization": `${accessToken.token_type} ${accessToken.access_token}`
+            },
+            validateStatus: null
+        }).catch((error) => {
+            throw new HttpException(error.response.data.error_description, HttpStatus.BAD_REQUEST);
+        });
+
+        const apiUser = profileResponse.data;
+
+        // Check if userId is used by another account
+        const exists = await this.discordLinkRepository.findOne({
+            where: {
+                userId: apiUser.id
+            }
+        });
+
+        if (exists) {
+            throw new HttpException("Discord account is already linked with another user!", HttpStatus.CONFLICT);
+        }
+
+        const discordLink = await this.discordLinkRepository.save({
+            ...accessToken,
+            userId: apiUser.id
+        });
+
+        user.discordLink = discordLink;
+        await this.usersRepository.save(user);
+    }
+
     public async findOne(username: string): Promise<User | undefined> {
-        return this.usersRepository.findOne({username: username});
+        return this.usersRepository.findOne({
+            where: {
+                username
+            },
+            relations: ["discordLink"]
+        });
     }
 
     public async insert(user: User): Promise<void> {
@@ -20,11 +93,11 @@ export class UsersService {
     }
 
     public async update(id: number, updatedUser: Partial<User>): Promise<void> {
-        const foundUser = await this.usersRepository.findOne({id: id});
+        const foundUser = await this.usersRepository.findOne({ id: id });
         if (!foundUser) {
             throw new NotFoundException(`No user found with ID ${id}`);
         }
-        if (Object.keys(updatedUser).length == 0 ) {
+        if (Object.keys(updatedUser).length == 0) {
             throw new BadRequestException("At least one updated value is required");
         }
         this.usersRepository.update(id, updatedUser);
