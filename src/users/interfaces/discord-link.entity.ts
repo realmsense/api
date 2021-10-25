@@ -1,8 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { IDiscordLink } from "../../../shared/src";
-import { Database } from "../../secrets";
+import { Secret } from "../../../shared/src/constants/secrets/secrets";
 
-@Entity({ database: Database.Customers })
+@Entity({ database: Secret.Database.db.Customers })
 export class DiscordLink implements IDiscordLink {
     
     @PrimaryGeneratedColumn()

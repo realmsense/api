@@ -1,11 +1,11 @@
 import { BadRequestException, HttpException, HttpStatus, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import axios from "axios";
-import { APIUser, RESTPostOAuth2AccessTokenResult } from "discord-api-types/v9";
+import { APIUser, RESTPostOAuth2AccessTokenResult, RouteBases } from "discord-api-types/v9";
 import { Response } from "express";
 import qs from "qs";
 import { Repository } from "typeorm";
-import { Discord } from "../secrets";
+import { Secret } from "../../shared/src/constants/secrets/secrets";
 import { DiscordLink } from "./interfaces/discord-link.entity";
 import { User } from "./interfaces/user.entity";
 
@@ -22,7 +22,7 @@ export class UsersService {
 
     public redirectDiscordOAuth(res: Response): void {
         // TODO: generate and store a `state` variable
-        const bruh = new URL(Discord.API_URL + "/oauth2/authorize");
+        const bruh = new URL(RouteBases.api + "/oauth2/authorize");
         bruh.searchParams.append("client_id", "880231286579527680");
         bruh.searchParams.append("redirect_uri", "http://127.0.0.1:4200/dashboard/profile/link-discord");
         bruh.searchParams.append("response_type", "code");
@@ -34,13 +34,13 @@ export class UsersService {
         // TODO: veriify `state` (also need to add to DTO)
 
         // Exchange oauth code for access token 
-        const tokenResponse = await axios.post<RESTPostOAuth2AccessTokenResult>(Discord.API_URL + "/oauth2/token",
+        const tokenResponse = await axios.post<RESTPostOAuth2AccessTokenResult>(RouteBases.api + "/oauth2/token",
             qs.stringify({
-                "client_id"    : Discord.ClientID,
-                "client_secret": Discord.ClientSecret,
+                "client_id"    : Secret.Discord.ClientID,
+                "client_secret": Secret.Discord.ClientSecret,
                 "grant_type"   : "authorization_code",
                 "code"         : oauthCode,
-                "redirect_uri" : Discord.RedirectURI,
+                "redirect_uri" : Secret.Discord.RedirectURI,
             })
         ).catch((error) => {
             throw new HttpException(error.response.data.error_description, HttpStatus.BAD_REQUEST);
@@ -48,7 +48,7 @@ export class UsersService {
 
         // Get profile
         const accessToken = tokenResponse.data;
-        const profileResponse = await axios.get<APIUser>(Discord.API_URL + "/users/@me", {
+        const profileResponse = await axios.get<APIUser>(RouteBases.api + "/users/@me", {
             headers: {
                 "Authorization": `${accessToken.token_type} ${accessToken.access_token}`
             },

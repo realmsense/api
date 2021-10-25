@@ -1,10 +1,10 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ICharacter, IServer } from "../../../../shared/src";
-import { Database } from "../../../secrets";
+import { Secret } from "../../../../shared/src/constants/secrets/secrets";
 import { PlayerDto } from "../dto/player.dto";
 import { Account } from "./account.entity";
 
-@Entity({ database: Database.Tracker })
+@Entity({ database: Secret.Database.db.Tracker })
 export class Character implements ICharacter {
 
     @PrimaryGeneratedColumn()

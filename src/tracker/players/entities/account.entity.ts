@@ -1,10 +1,10 @@
 import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { GuildRank, IAccount } from "../../../../shared/src";
-import { Database } from "../../../secrets";
+import { Secret } from "../../../../shared/src/constants/secrets/secrets";
 import { PlayerDto } from "../dto/player.dto";
 import { Character } from "./character.entity";
 
-@Entity({ database: Database.Tracker })
+@Entity({ database: Secret.Database.db.Tracker })
 export class Account implements IAccount {
     
     @PrimaryColumn()
