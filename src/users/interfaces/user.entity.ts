@@ -1,7 +1,7 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { IsNotEmpty } from "class-validator";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { IUser, Permission } from "../../../shared/src";
 import { Database } from "../../secrets";
-import { IUser, Permission } from "../../../types/src";
 import { DiscordLink } from "./discord-link.entity";
 
 @Entity({ database: Database.Customers })

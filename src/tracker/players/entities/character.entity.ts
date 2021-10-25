@@ -1,8 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
-import { Account } from "./account.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { ICharacter, IServer } from "../../../../shared/src";
 import { Database } from "../../../secrets";
 import { PlayerDto } from "../dto/player.dto";
-import { ICharacter, IServer } from "../../../../types/src";
+import { Account } from "./account.entity";
 
 @Entity({ database: Database.Tracker })
 export class Character implements ICharacter {

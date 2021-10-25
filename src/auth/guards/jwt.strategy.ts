@@ -1,9 +1,9 @@
-import { ExtractJwt, Strategy } from "passport-jwt";
-import { PassportStrategy } from "@nestjs/passport";
 import { Injectable } from "@nestjs/common";
-import { jwtConstants } from "../auth.constants";
+import { PassportStrategy } from "@nestjs/passport";
+import { ExtractJwt, Strategy } from "passport-jwt";
 import { User } from "../../users/interfaces/user.entity";
 import { UsersService } from "../../users/users.service";
+import { jwtConstants } from "../auth.constants";
 
 interface JWTPayload {
     sub: number;

@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
-import { Injectable, CanActivate, ExecutionContext, SetMetadata, CustomDecorator } from "@nestjs/common";
+import { CanActivate, ExecutionContext, Injectable, SetMetadata } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
-import { Permission } from "../../../types/src";
+import { Permission } from "../../../shared/src";
 import { User } from "../../users/interfaces/user.entity";
+
 
 @Injectable()
 export class PermissionGuard implements CanActivate {

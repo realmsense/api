@@ -1,8 +1,8 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
-import { IsNotEmpty} from "class-validator";
-import { Build } from "./build.entity";
 import { OmitType } from "@nestjs/swagger";
+import { IsNotEmpty } from "class-validator";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { Database } from "../../secrets";
+import { Build } from "./build.entity";
 
 @Entity({ database: Database.Default })
 export class BuildType {

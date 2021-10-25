@@ -1,10 +1,10 @@
 import { Body, Controller, Post, Request, UseGuards } from "@nestjs/common";
-import { AuthService } from "./auth.service";
+import { IAuthToken } from "../../shared/src";
 import { SkipJWTAuth } from "./auth.constants";
+import { AuthService } from "./auth.service";
 import { LocalAuthGuard } from "./guards/local-auth.guard";
-import { RegisterUserDto } from "./models/register-user.dto";
-import { IAuthToken } from "../../types/src";
 import { ChangePasswordDTO } from "./models/change-password-dto";
+import { RegisterUserDto } from "./models/register-user.dto";
 
 @Controller("auth")
 export class AuthController {

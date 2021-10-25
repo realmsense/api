@@ -1,13 +1,13 @@
-import axios from "axios";
 import { BadRequestException, HttpException, HttpStatus, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import axios from "axios";
+import { APIUser, RESTPostOAuth2AccessTokenResult } from "discord-api-types/v9";
 import { Response } from "express";
+import qs from "qs";
 import { Repository } from "typeorm";
 import { Discord } from "../secrets";
-import { User } from "./interfaces/user.entity";
-import { RESTPostOAuth2AccessTokenResult, APIUser } from "discord-api-types/v9";
-import qs from "qs";
 import { DiscordLink } from "./interfaces/discord-link.entity";
+import { User } from "./interfaces/user.entity";
 
 
 @Injectable()

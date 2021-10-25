@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
-import { PlayerDto } from "./dto/player.dto";
-import { Account } from "./entities/account.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Raw, Repository } from "typeorm";
-import { Character } from "./entities/character.entity";
+import { IPlayer } from "../../../shared/src";
 import { User } from "../../users/interfaces/user.entity";
+import { PlayerDto } from "./dto/player.dto";
 import { WatchListDTO } from "./dto/watchlist.dto";
-import { IPlayer } from "../../../types/src";
+import { Account } from "./entities/account.entity";
+import { Character } from "./entities/character.entity";
 
 @Injectable()
 export class PlayersService {

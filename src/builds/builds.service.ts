@@ -1,11 +1,12 @@
-import * as fs from "fs";
 import { ConflictException, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import * as fs from "fs";
 import { Repository } from "typeorm";
+import { Permission } from "../../shared/src";
+import { User } from "../users/interfaces/user.entity";
 import { Build } from "./interfaces/build.entity";
 import { BuildType, CreateBuildTypeDTO } from "./interfaces/build_type.entity";
-import { User } from "../users/interfaces/user.entity";
-import { Permission } from "../../types/src";
+
 
 @Injectable()
 export class BuildsService {

@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { CanActivate, ExecutionContext, Injectable, SetMetadata } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
-import { Permission } from "../../../types/src";
+import { Permission } from "../../../shared/src";
 import { DiscordService } from "../../tracker/discord/discord.service";
 import { AuthKeyConstants } from "../auth.constants";
 

@@ -24,6 +24,6 @@
     },
     "include": [
         "src",
-        "./types/src"
+        "./shared/src"
     ]
 }

@@ -1,8 +1,8 @@
-import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm";
-import { Character } from "./character.entity";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
+import { GuildRank, IAccount } from "../../../../shared/src";
 import { Database } from "../../../secrets";
 import { PlayerDto } from "../dto/player.dto";
-import { GuildRank, IAccount } from "../../../../types/src";
+import { Character } from "./character.entity";
 
 @Entity({ database: Database.Tracker })
 export class Account implements IAccount {

@@ -1,8 +1,7 @@
 import { Type } from "class-transformer";
-import { IsNotEmpty, ValidateNested, IsNumber, IsString } from "class-validator";
-import { WorldPosDataDTO } from "../../interfaces/worldposdata.dto";
+import { IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator";
+import { GuildRank, IPlayer, IServer, IWorldPosData } from "../../../../shared/src";
 import { ServerDTO } from "../../interfaces/server.dto";
-import { IPlayer, IServer, IWorldPosData, GuildRank } from "../../../../types/src";
 
 export class PlayerDto implements IPlayer {
     // @IsNumber()

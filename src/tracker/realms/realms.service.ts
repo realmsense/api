@@ -1,6 +1,6 @@
-import { Injectable, NotFoundException, MessageEvent } from "@nestjs/common";
+import { Injectable, MessageEvent, NotFoundException } from "@nestjs/common";
 import { Observable, Subject } from "rxjs";
-import { IRealm, IRealmEvent } from "../../../types/src";
+import { IRealm, IRealmEvent } from "../../../shared/src";
 
 @Injectable()
 export class RealmsService {

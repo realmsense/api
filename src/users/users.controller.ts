@@ -1,12 +1,11 @@
 import { Body, Controller, Get, ParseIntPipe, Post, Put, Query, Request, Res } from "@nestjs/common";
 import { Response } from "express";
+import { Permission } from "../../shared/src";
+import { SkipJWTAuth } from "../auth/auth.constants";
+import { RequirePermission } from "../auth/guards/permission.guard";
+import { LinkDiscordDTO } from "./interfaces/link-discord.dto";
 import { User } from "./interfaces/user.entity";
 import { UsersService } from "./users.service";
-import { RequirePermission } from "../auth/guards/permission.guard";
-import { Permission } from "../../types/src";
-import { SkipJWTAuth } from "../auth/auth.constants";
-import { LinkDiscordDTO } from "./interfaces/link-discord.dto";
-
 
 @Controller("user")
 export class UsersController {
