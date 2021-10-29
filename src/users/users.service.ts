@@ -4,7 +4,7 @@ import axios from "axios";
 import { APIUser, RESTPostOAuth2AccessTokenResult, RouteBases } from "discord-api-types/v9";
 import { Response } from "express";
 import qs from "qs";
-import { Repository } from "typeorm";
+import { FindConditions, Repository } from "typeorm";
 import { Secret } from "../../shared/src/constants/secrets/secrets";
 import { DiscordLink } from "./interfaces/discord-link.entity";
 import { User } from "./interfaces/user.entity";
@@ -79,11 +79,9 @@ export class UsersService {
         await this.usersRepository.save(user);
     }
 
-    public async findOne(username: string): Promise<User | undefined> {
+    public async findOne(search: FindConditions<User>): Promise<User | undefined> {
         return this.usersRepository.findOne({
-            where: {
-                username
-            },
+            where: search,
             relations: ["discordLink"]
         });
     }

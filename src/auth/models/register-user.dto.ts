@@ -5,5 +5,8 @@ export class RegisterUserDto {
     public username: string;
 
     @IsNotEmpty()
+    public email: string;
+
+    @IsNotEmpty()
     public password: string;
 }

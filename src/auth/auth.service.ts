@@ -16,7 +16,7 @@ export class AuthService {
     ) { }
 
     public async validateUser(username: string, password: string): Promise<User | null> {
-        const user = await this.usersService.findOne(username);
+        const user = await this.usersService.findOne({ username });
         if (user && bcrypt.compareSync(password, user.password)) {
             // @ts-ignore
             delete user.password; // remove password from user
@@ -46,13 +46,21 @@ export class AuthService {
         return true;
     }
 
-    private async validateUsernamePassword(username: string, password: string): Promise<void> {
-        // Username must only be letters and numbers
+    private async hashPassword(password: string): Promise<string> {
+        return await bcrypt.hash(password, 10);
+    }
+
+    public async register(username: string, email: string, password: string): Promise<void> {
+
+        // Validate inputs
+
+        // Username characters must only be letters and numbers
         const alphanumeric = /^[a-z0-9]+$/i;
         if (!alphanumeric.test(username)) {
             throw new HttpException("Username contains invalid characters. (Please use an alphanumeric string)", HttpStatus.BAD_REQUEST);
         }
 
+        // Username length
         const MAX_USERNAME_LENGTH = 32;
         if (username.length > MAX_USERNAME_LENGTH) {
             throw new HttpException(`Username is too long. (Max ${MAX_USERNAME_LENGTH} characters)`, HttpStatus.BAD_REQUEST);
@@ -64,22 +72,23 @@ export class AuthService {
             throw new HttpException(`Password is too long. (Max ${MAX_PASSWORD_LENGTH} characters)`, HttpStatus.BAD_REQUEST);
         }
 
-        const existingUser = await this.usersService.findOne(username);
-        if (existingUser) {
+        // Username must be unique
+        const existingUsername = await this.usersService.findOne({ username });
+        if (existingUsername) {
             throw new HttpException(`Username "${username}" already in use!`, HttpStatus.CONFLICT);
         }
-    }
 
-    private async hashPassword(password: string): Promise<string> {
-        return await bcrypt.hash(password, 10);
-    }
+        // Email must be unique
+        const existingEmail = await this.usersService.findOne({ email });
+        if (existingEmail) {
+            throw new HttpException(`Email "${email}" already in use!`, HttpStatus.CONFLICT);
+        }
 
-    public async register(username: string, password: string): Promise<void> {
-        await this.validateUsernamePassword(username, password);
         const hash = await this.hashPassword(password);
 
         const user = new User();
         user.username = username;
+        user.email = email;
         user.password = hash;
         this.usersService.insert(user);
     }
