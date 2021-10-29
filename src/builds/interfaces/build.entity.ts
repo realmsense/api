@@ -1,9 +1,9 @@
 import { IsInt, IsNotEmpty } from "class-validator";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Secret } from "../../../shared/src/constants/secrets/secrets";
+import { ENV } from "../../../shared/src";
 import { BuildType } from "./build_type.entity";
 
-@Entity({ database: Secret.Database.db.Default })
+@Entity({ database: ENV.Database.db.Default })
 export class Build {
     @PrimaryGeneratedColumn()
     public id: number;

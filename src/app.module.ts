@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { APP_GUARD } from "@nestjs/core";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { Secret } from "../shared/src/constants/secrets/secrets";
+import { ENV } from "../shared/src";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { AuthModule } from "./auth/auth.module";
@@ -16,7 +16,7 @@ import { UsersModule } from "./users/users.module";
 
 @Module({
     imports: [
-        TypeOrmModule.forRoot(Secret.Database.config),
+        TypeOrmModule.forRoot(ENV.Database.config),
         BuildsModule,
         AuthModule,
         UsersModule,

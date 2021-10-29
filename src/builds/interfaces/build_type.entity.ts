@@ -1,10 +1,10 @@
 import { OmitType } from "@nestjs/swagger";
 import { IsNotEmpty } from "class-validator";
 import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
-import { Secret } from "../../../shared/src/constants/secrets/secrets";
+import { ENV } from "../../../shared/src";
 import { Build } from "./build.entity";
 
-@Entity({ database: Secret.Database.db.Default })
+@Entity({ database: ENV.Database.db.Default })
 export class BuildType {
 
     @PrimaryColumn()

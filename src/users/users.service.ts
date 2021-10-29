@@ -5,7 +5,7 @@ import { APIUser, RESTPostOAuth2AccessTokenResult, RouteBases } from "discord-ap
 import { Response } from "express";
 import qs from "qs";
 import { FindConditions, Repository } from "typeorm";
-import { Secret } from "../../shared/src/constants/secrets/secrets";
+import { ENV } from "../../shared/src";
 import { DiscordLink } from "./interfaces/discord-link.entity";
 import { User } from "./interfaces/user.entity";
 
@@ -36,11 +36,11 @@ export class UsersService {
         // Exchange oauth code for access token 
         const tokenResponse = await axios.post<RESTPostOAuth2AccessTokenResult>(RouteBases.api + "/oauth2/token",
             qs.stringify({
-                "client_id"    : Secret.Discord.ClientID,
-                "client_secret": Secret.Discord.ClientSecret,
+                "client_id"    : ENV.Discord.ClientID,
+                "client_secret": ENV.Discord.ClientSecret,
                 "grant_type"   : "authorization_code",
                 "code"         : oauthCode,
-                "redirect_uri" : Secret.Discord.RedirectURI,
+                "redirect_uri" : ENV.Discord.RedirectURI,
             })
         ).catch((error) => {
             throw new HttpException(error.response.data.error_description, HttpStatus.BAD_REQUEST);
