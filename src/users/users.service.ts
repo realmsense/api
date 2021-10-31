@@ -5,7 +5,7 @@ import { APIUser, RESTPostOAuth2AccessTokenResult, RouteBases } from "discord-ap
 import { Response } from "express";
 import qs from "qs";
 import { FindConditions, Repository } from "typeorm";
-import { ENV } from "../../shared/src";
+import { ENV } from "../../shared/src/constants/environment";
 import { DiscordLink } from "./interfaces/discord-link.entity";
 import { User } from "./interfaces/user.entity";
 

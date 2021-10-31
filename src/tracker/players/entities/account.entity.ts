@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
-import { ENV, GuildRank, IAccount } from "../../../../shared/src";
+import { GuildRank, IAccount } from "../../../../shared/src";
+import { ENV } from "../../../../shared/src/constants/environment";
 import { PlayerDto } from "../dto/player.dto";
 import { Character } from "./character.entity";
 

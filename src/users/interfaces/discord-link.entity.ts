@@ -1,5 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { ENV, IDiscordLink } from "../../../shared/src";
+import { IDiscordLink } from "../../../shared/src";
+import { ENV } from "../../../shared/src/constants/environment";
 
 @Entity({ database: ENV.Database.db.Customers })
 export class DiscordLink implements IDiscordLink {

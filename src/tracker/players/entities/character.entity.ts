@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { ENV, ICharacter, IServer } from "../../../../shared/src";
+import { ICharacter, IServer } from "../../../../shared/src";
+import { ENV } from "../../../../shared/src/constants/environment";
 import { PlayerDto } from "../dto/player.dto";
 import { Account } from "./account.entity";
 

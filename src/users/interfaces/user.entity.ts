@@ -1,6 +1,7 @@
 import { IsNotEmpty } from "class-validator";
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { ENV, IUser, Permission } from "../../../shared/src";
+import { IUser, Permission } from "../../../shared/src";
+import { ENV } from "../../../shared/src/constants/environment";
 import { DiscordLink } from "./discord-link.entity";
 
 @Entity({ database: ENV.Database.db.Customers })

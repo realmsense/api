@@ -1,7 +1,7 @@
 import { OmitType } from "@nestjs/swagger";
 import { IsNotEmpty } from "class-validator";
 import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
-import { ENV } from "../../../shared/src";
+import { ENV } from "../../../shared/src/constants/environment";
 import { Build } from "./build.entity";
 
 @Entity({ database: ENV.Database.db.Default })
