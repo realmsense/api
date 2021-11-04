@@ -1,7 +1,8 @@
 import { Controller, Get, MessageEvent, Query, Sse, UseGuards } from "@nestjs/common";
 import { Observable } from "rxjs";
 import { IPlayer, IRealm, Permission } from "../../../shared/src";
-import { AuthKeyConstants, SkipJWTAuth } from "../../auth/auth.constants";
+import { ENV } from "../../../shared/src/constants/environment";
+import { SkipJWTAuth } from "../../auth/auth.constants";
 import { RequireAuthKey } from "../../auth/guards/authkey.guard";
 import { DiscordPermissionGuard, RequireDiscordPermissionKey } from "../../auth/guards/discord-permission.guard";
 import { PlayersService } from "../players/players.service";
@@ -11,7 +12,7 @@ import { DiscordService } from "./discord.service";
 
 @SkipJWTAuth()
 @UseGuards(DiscordPermissionGuard)
-@RequireAuthKey(AuthKeyConstants.Discord)
+@RequireAuthKey(ENV.Authkey.Discord)
 @Controller("discord")
 export class DiscordController {
 

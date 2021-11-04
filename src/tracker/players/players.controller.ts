@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, Post, Put, Query, Request } from "@nestjs/common";
 import { IPlayer } from "../../../shared/src";
-import { AuthKeyConstants, SkipJWTAuth } from "../../auth/auth.constants";
+import { ENV } from "../../../shared/src/constants/environment";
+import { SkipJWTAuth } from "../../auth/auth.constants";
 import { RequireAuthKey } from "../../auth/guards/authkey.guard";
 import { User } from "../../users/interfaces/user.entity";
 import { GetCharacterDTO } from "./dto/get-character.dto";
@@ -16,7 +17,7 @@ export class PlayersController {
 
     @Put("")
     @HttpCode(201)
-    @RequireAuthKey(AuthKeyConstants.Players)
+    @RequireAuthKey(ENV.Authkey.Players)
     @SkipJWTAuth()
     public createPlayer(@Body() playerDto: PlayerDto): Promise<void> {
         return this.playersService.createPlayer(playerDto);

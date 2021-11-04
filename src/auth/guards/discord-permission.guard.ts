@@ -3,8 +3,8 @@
 import { CanActivate, ExecutionContext, Injectable, SetMetadata } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import { Permission } from "../../../shared/src";
+import { ENV } from "../../../shared/src/constants/environment";
 import { DiscordService } from "../../tracker/discord/discord.service";
-import { AuthKeyConstants } from "../auth.constants";
 
 @Injectable()
 export class DiscordPermissionGuard implements CanActivate {
@@ -30,7 +30,7 @@ export class DiscordPermissionGuard implements CanActivate {
             return false;
         }
 
-        if (request.query["authkey"] != AuthKeyConstants.Discord) {
+        if (request.query["authkey"] != ENV.Authkey.Discord) {
             return false;
         }
 

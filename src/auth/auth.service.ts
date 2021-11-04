@@ -2,9 +2,9 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import * as bcrypt from "bcrypt";
 import { IAuthToken } from "../../shared/src";
+import { ENV } from "../../shared/src/constants/environment";
 import { User } from "../users/interfaces/user.entity";
 import { UsersService } from "../users/users.service";
-import { jwtConstants } from "./auth.constants";
 
 
 @Injectable()
@@ -30,7 +30,7 @@ export class AuthService {
         const timestamp = Math.floor(Date.now() / 1000);
         const authToken: IAuthToken = {
             token: this.jwtService.sign(payload),
-            expiration: timestamp + jwtConstants.expiration
+            expiration: timestamp + ENV.JWT.Expiration
         };
         return authToken;
     }
