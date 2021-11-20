@@ -29,6 +29,6 @@ export class AuthController {
     @Post("register")
     @SkipJWTAuth()
     public async register(@Body() registerUserDto: RegisterUserDto): Promise<void> {
-        return this.authService.register(registerUserDto.username, registerUserDto.email, registerUserDto.password);
+        return this.authService.register(registerUserDto.username, registerUserDto.password);
     }
 }

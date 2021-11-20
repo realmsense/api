@@ -8,11 +8,10 @@ import { DiscordLink } from "./discord-link.entity";
 export class User implements IUser {
     @PrimaryGeneratedColumn()
     public id: number;
-    
-    @Column()
-    @IsNotEmpty()
-    public email: string;
-    
+
+    @Column({ nullable: true })
+    public email?: string;
+
     @OneToOne(() => DiscordLink)
     @JoinColumn()
     public discordLink: DiscordLink;

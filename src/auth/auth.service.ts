@@ -50,7 +50,7 @@ export class AuthService {
         return await bcrypt.hash(password, 10);
     }
 
-    public async register(username: string, email: string, password: string): Promise<void> {
+    public async register(username: string, password: string): Promise<void> {
 
         // Validate inputs
 
@@ -78,17 +78,10 @@ export class AuthService {
             throw new HttpException(`Username "${username}" already in use!`, HttpStatus.CONFLICT);
         }
 
-        // Email must be unique
-        const existingEmail = await this.usersService.findOne({ email });
-        if (existingEmail) {
-            throw new HttpException(`Email "${email}" already in use!`, HttpStatus.CONFLICT);
-        }
-
         const hash = await this.hashPassword(password);
 
         const user = new User();
         user.username = username;
-        user.email = email;
         user.password = hash;
         this.usersService.insert(user);
     }
