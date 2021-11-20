@@ -1,0 +1,871 @@
+_type: export
+__export_format: 4
+__export_date: 2021-11-20T20:43:49.903Z
+__export_source: insomnia.desktop.app:v2021.6.0
+resources:
+  - _id: req_7e79827781e34394b6e5a8eba7882ae4
+    parentId: fld_ac20d8a2081c40dfaaab0b03f8155519
+    modified: 1637438755880
+    created: 1634200557413
+    url: "{{API_URL}}/auth/login"
+    name: auth/login
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "username": "{{TESTING_USERNAME}}",
+            "password": "{{TESTING_PASSWORD}}a"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_8d382beeff4f4f52a157a28617ada382
+    authentication: {}
+    metaSortKey: -1634200557413
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_ac20d8a2081c40dfaaab0b03f8155519
+    parentId: wrk_79a3fb2ba3c84c54a310f281f796e3a7
+    modified: 1634202552051
+    created: 1634200549950
+    name: auth
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1634202523457
+    _type: request_group
+  - _id: wrk_79a3fb2ba3c84c54a310f281f796e3a7
+    parentId: null
+    modified: 1634200473098
+    created: 1634200473098
+    name: realmsense
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_04195616739f4f2b987eec78b751cfdf
+    parentId: fld_ac20d8a2081c40dfaaab0b03f8155519
+    modified: 1636021435119
+    created: 1634728626675
+    url: "{{API_URL}}/auth/changePassword"
+    name: auth/changePassword
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "oldPassword": "bruh",
+            "newPassword": "asd"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_8d382beeff4f4f52a157a28617ada382
+    authentication:
+      type: bearer
+      token: "{{AUTH_TOKEN}}"
+    metaSortKey: -1634200557388
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ff2f15c01e564d1db23566cb33187c23
+    parentId: fld_ac20d8a2081c40dfaaab0b03f8155519
+    modified: 1637237543190
+    created: 1634201073982
+    url: "{{API_URL}}/auth/register"
+    name: auth/register
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "username": "{{TESTING_USERNAME}}",
+            "password": "{{TESTING_PASSWORD}}",
+            "email": "{{TESTING_EMAIL}}"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_8d382beeff4f4f52a157a28617ada382
+    authentication: {}
+    metaSortKey: -1634200557363
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c48caaafc7f54e39a1ed0dad903020ec
+    parentId: fld_fbb1886d46e045e2b03265ce92d746a9
+    modified: 1634202603715
+    created: 1634202541880
+    url: "{{API_URL}}/user/profile"
+    name: user/profile
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ AUTH_TOKEN }}"
+    metaSortKey: -1634202541880
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_fbb1886d46e045e2b03265ce92d746a9
+    parentId: wrk_79a3fb2ba3c84c54a310f281f796e3a7
+    modified: 1634202523407
+    created: 1634202523407
+    name: users
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1634202523407
+    _type: request_group
+  - _id: req_f073bc09162d4539bc7a652580c230b0
+    parentId: fld_fbb1886d46e045e2b03265ce92d746a9
+    modified: 1635088987716
+    created: 1635081631485
+    url: "{{API_URL}}/user/link-discord"
+    name: user/link-discord
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1634202492047.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e6183fb73ce0448d8380e2e1bfa82a52
+    parentId: fld_fbb1886d46e045e2b03265ce92d746a9
+    modified: 1637439289692
+    created: 1635088973699
+    url: "{{API_URL}}/user/link-discord"
+    name: user/link-discord
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "code": "Op4CCqEou6CcAAicEx660Z5XIzHLjJ"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_788d019858004d84b433bbf61721dd18
+    authentication:
+      type: bearer
+      token: "{{ AUTH_TOKEN }}"
+    metaSortKey: -1634202467130.875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6af444b9dd0c431691308852ca98d935
+    parentId: fld_fbb1886d46e045e2b03265ce92d746a9
+    modified: 1637439289067
+    created: 1634202615451
+    url: "{{API_URL}}/user/update"
+    name: user/update
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "username": "asd"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_20726737f93041aaa8e5f539c688fc81
+    authentication:
+      type: bearer
+      token: "{{ AUTH_TOKEN }}"
+    metaSortKey: -1634202442214.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d342d09e9c7e4599b9dbadc4aa4da4f4
+    parentId: fld_fbb1886d46e045e2b03265ce92d746a9
+    modified: 1637439288091
+    created: 1634202699132
+    url: "{{API_URL}}/user/all"
+    name: user/all
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "username": "asd"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_20726737f93041aaa8e5f539c688fc81
+    authentication:
+      type: bearer
+      token: "{{AUTH_TOKEN}}"
+    metaSortKey: -1634202392381.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_02ec27ed1ef841e8a49c1a222bddef68
+    parentId: fld_c5c3e719c53e42a1800d225b499783d9
+    modified: 1634202357681
+    created: 1634202342549
+    url: "{{API_URL}}/tracker/players/watchList"
+    name: get watchList
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{AUTH_TOKEN}}"
+    metaSortKey: -1634202342549
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_c5c3e719c53e42a1800d225b499783d9
+    parentId: fld_5a495e665b1246d2b3f7165056bfab41
+    modified: 1634202482332
+    created: 1634201851217
+    name: watchlist
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1634201888734
+    _type: request_group
+  - _id: fld_5a495e665b1246d2b3f7165056bfab41
+    parentId: fld_931f169870a8495291b64a86ee714b76
+    modified: 1634202505552
+    created: 1634201218800
+    name: players
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1634201221836
+    _type: request_group
+  - _id: fld_931f169870a8495291b64a86ee714b76
+    parentId: wrk_79a3fb2ba3c84c54a310f281f796e3a7
+    modified: 1634201745958
+    created: 1634201183811
+    name: tracker
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1634200875715.5
+    _type: request_group
+  - _id: req_ebaa2fb424424c3d87f36586e207ad5b
+    parentId: fld_c5c3e719c53e42a1800d225b499783d9
+    modified: 1634202391654
+    created: 1634202372849
+    url: "{{API_URL}}/tracker/players/watchList"
+    name: add to watchList
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "playerName": "CHeroic"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{AUTH_TOKEN}}"
+    metaSortKey: -1634202115616.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_48aa44c254dd4ce091080c22d3abd816
+    parentId: fld_c5c3e719c53e42a1800d225b499783d9
+    modified: 1634202415149
+    created: 1634202405747
+    url: "{{API_URL}}/tracker/players/watchList"
+    name: delete from watchlist
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "playerName": "CHeroic"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_9ec616ce4c3c45b2bf288de40cf3a914
+    authentication:
+      type: bearer
+      token: "{{AUTH_TOKEN}}"
+    metaSortKey: -1634202002150.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f86eb588bd4a457da943d777284bcd9c
+    parentId: fld_5a495e665b1246d2b3f7165056bfab41
+    modified: 1634201977753
+    created: 1634201865536
+    url: "{{API_URL}}/tracker/players"
+    name: create player
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "statMap": {},
+            "condition": [
+                256,
+                0
+            ],
+            "potions": [
+                -1,
+                -1,
+                -1
+            ],
+            "inventory": [
+                32700,
+                32699,
+                2707,
+                8668,
+                -1,
+                31847,
+                -1,
+                -1,
+                -1,
+                -1
+            ],
+            "backpack": [
+                -1,
+                -1,
+                -2,
+                -1,
+                -1,
+                -1,
+                -1
+            ],
+            "status": {
+                "objectId": 316396,
+                "pos": {
+                    "x": 102.16543579101562,
+                    "y": 164.38401794433594
+                },
+                "stats": [
+                    {
+                        "type": 4,
+                        "value": 183,
+                        "stringValue": "",
+                        "unknownByte": -1
+                    }
+                ]
+            },
+            "objectID": 316396,
+            "objectType": 782,
+            "pos": {
+                "x": 102.16543579101562,
+                "y": 164.38401794433594
+            },
+            "nameChosen": true,
+            "accountID": "6111943004782592",
+            "maxMP": 0,
+            "numStars": 19,
+            "maxHP": 135,
+            "hp": 905,
+            "size": 100,
+            "level": 20,
+            "name": "CHeroic",
+            "tex1": 21692546,
+            "tex2": 33549261,
+            "accountFame": 42599,
+            "currentFame": 604,
+            "legendaryRank": -1,
+            "guildName": "asdjhasjhndasd",
+            "guildRank": 40,
+            "supporter": false,
+            "playerID": 160707,
+            "projectileSpeed": 1000,
+            "projectileLife": 1000,
+            "exaltedHP": 0,
+            "exaltedMP": 0,
+            "dexterity": 51,
+            "mp": 183,
+            "exp": 1168241,
+            "hasBackpack": false,
+            "server": {
+                "address": "127.0.0.1",
+                "name": "USWest"
+            },
+            "location": "Nexus"
+        }
+    parameters:
+      - id: pair_038ab0e1686a48d2aef96a309ed65494
+        name: authkey
+        value: "{{PLAYERS_AUTHKEY}}"
+        description: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b7e9d74f7bc0482483cdcc0e678cabb7
+    authentication: {}
+    metaSortKey: -1634201888684
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_188a82a738c34daa9b28f3dc466094f2
+    parentId: fld_5a495e665b1246d2b3f7165056bfab41
+    modified: 1634202056198
+    created: 1634201888534
+    url: "{{API_URL}}/tracker/players"
+    name: search players
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_6b81d0dc0c554310b4658598ce7cdec3
+        name: name
+        value: ch
+        description: ""
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{AUTH_TOKEN}}"
+    metaSortKey: -1634201888659
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6d81eaf9b67442c6ba43539eb7d6861a
+    parentId: fld_5a495e665b1246d2b3f7165056bfab41
+    modified: 1634202309801
+    created: 1634201903937
+    url: "{{API_URL}}/tracker/players/characters"
+    name: get account characters
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "playerId": 160707,
+            "alive": false
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_2c70bce2c58f41c082404395ab9aec84
+    authentication:
+      type: bearer
+      token: "{{AUTH_TOKEN}}"
+    metaSortKey: -1634201888634
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_dc1300daf2f14ee7935a84c8d25d62d2
+    parentId: fld_8d70d218696443889ed19e44014a15e4
+    modified: 1634207554522
+    created: 1634201229431
+    url: "{{API_URL}}/tracker/realms"
+    name: create realm
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "name": "Kraken",
+            "openedTime": 1632665933,
+            "objectID": 123,
+            "pos": {
+                "x": 123.25,
+                "y": 123.55
+            },
+            "server": {
+                "name": "Asia",
+                "address": "127.0.0.1"
+            },
+            "players": 13,
+            "maxPlayers": 85,
+            "queue": 0,
+            "updatedTime": 1632665933
+        }
+    parameters:
+      - id: pair_dbe4a28c48b942c1abf2ccfe33d907ea
+        name: authkey
+        value: "{{REALM_AUTHKEY}}"
+        description: ""
+        disabled: false
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_f9f5eaf0443743fe8803fd9e70405e85
+    authentication: {}
+    metaSortKey: -1634201239807
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_8d70d218696443889ed19e44014a15e4
+    parentId: fld_931f169870a8495291b64a86ee714b76
+    modified: 1634201215549
+    created: 1634201215549
+    name: realms
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1634201215549
+    _type: request_group
+  - _id: req_7a97e4ee909a4f4a9ba8c2dd311d001f
+    parentId: fld_8d70d218696443889ed19e44014a15e4
+    modified: 1634277990866
+    created: 1634201470892
+    url: "{{API_URL}}/tracker/realms"
+    name: update realm
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "name": "Kraken",
+            "openedTime": 1632665933,
+            "objectID": 123,
+            "pos": {
+                "x": 13.25,
+                "y": 123.55
+            },
+            "server": {
+                "name": "Asia",
+                "address": "123"
+            },
+            "ip": "127.0.0.1",
+            "heroesLeft": 69,
+            "players": 35,
+            "maxPlayers": 13,
+            "queue": 5,
+            "updatedTime": 1632665933
+        }
+    parameters:
+      - id: pair_dbe4a28c48b942c1abf2ccfe33d907ea
+        name: authkey
+        value: "{{REALM_AUTHKEY}}"
+        description: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_f9f5eaf0443743fe8803fd9e70405e85
+    authentication: {}
+    metaSortKey: -1634200898610
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_83d0ca64db0f45bf8c58305236ba3302
+    parentId: fld_8d70d218696443889ed19e44014a15e4
+    modified: 1634201587550
+    created: 1634201499210
+    url: "{{API_URL}}/tracker/realms"
+    name: get realms
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{AUTH_TOKEN}}"
+    metaSortKey: -1634200728011.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2504f1428fa74aa1984822c5b8ad65ea
+    parentId: fld_8d70d218696443889ed19e44014a15e4
+    modified: 1634201596545
+    created: 1634201566061
+    url: "{{API_URL}}/tracker/realms"
+    name: delete realms
+    description: ""
+    method: DELETE
+    body: {}
+    parameters:
+      - id: pair_dbe4a28c48b942c1abf2ccfe33d907ea
+        name: authkey
+        value: "{{REALM_AUTHKEY}}"
+        description: ""
+      - id: pair_5bcbfdace74946b1a39d9443ebfc1ac8
+        name: objectId
+        value: "123"
+        description: ""
+    headers: []
+    authentication: {}
+    metaSortKey: -1634200642712.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_470b207232af4fc9aca8e407a6cbaec8
+    parentId: fld_0e67d7affe7f44a1a55f4d0b98a79797
+    modified: 1634287273660
+    created: 1634207303786
+    url: "{{API_URL}}/discord/playerLocation"
+    name: get player location
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_247e3c27e4024f3eac244394d0c69fe5
+        name: authkey
+        value: TWmXoFMpEZtPT7GT6AWJhuaeDwxg5RqC
+        description: ""
+        disabled: false
+      - id: pair_480aa30e0c694f8c8880233100d3d767
+        name: discordId
+        value: "155510934343909376"
+        description: ""
+        disabled: false
+      - id: pair_ffcb628e2b2b4d9b916658047dc32f58
+        name: name
+        value: Ch
+        description: ""
+    headers: []
+    authentication: {}
+    metaSortKey: -1634207303786
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_0e67d7affe7f44a1a55f4d0b98a79797
+    parentId: fld_931f169870a8495291b64a86ee714b76
+    modified: 1634202511952
+    created: 1634201221786
+    name: discord
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1634201215499
+    _type: request_group
+  - _id: req_f09cc2311a5e4bf8966d1aa0ec095b89
+    parentId: fld_0e67d7affe7f44a1a55f4d0b98a79797
+    modified: 1634271391070
+    created: 1634271348604
+    url: "{{API_URL}}/discord/realmInfo"
+    name: get realm info
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_247e3c27e4024f3eac244394d0c69fe5
+        name: authkey
+        value: TWmXoFMpEZtPT7GT6AWJhuaeDwxg5RqC
+        description: ""
+        disabled: false
+      - id: pair_480aa30e0c694f8c8880233100d3d767
+        name: discordId
+        value: "155510934343909376"
+        description: ""
+        disabled: false
+      - id: pair_ffcb628e2b2b4d9b916658047dc32f58
+        name: serverName
+        value: Asia
+        description: ""
+      - id: pair_8f91e0fa71cb425ba821939fb2792df9
+        name: realmName
+        value: kraken
+        description: ""
+    headers: []
+    authentication: {}
+    metaSortKey: -1634204922833
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_4ae42a04ab82834623d5d003f6583b5099d51bcc
+    parentId: wrk_79a3fb2ba3c84c54a310f281f796e3a7
+    modified: 1636029758939
+    created: 1634200473107
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: {}
+    color: null
+    isPrivate: false
+    metaSortKey: 1634200473108
+    _type: environment
+  - _id: jar_4ae42a04ab82834623d5d003f6583b5099d51bcc
+    parentId: wrk_79a3fb2ba3c84c54a310f281f796e3a7
+    modified: 1635081642472
+    created: 1634200473110
+    name: Default Jar
+    cookies:
+      - key: __dcfduid
+        value: 2f875a3234cd11ec973e42010a0a03ad
+        expires: 2026-10-23T13:20:42.000Z
+        maxAge: 157680000
+        domain: discord.com
+        path: /
+        secure: true
+        httpOnly: true
+        hostOnly: true
+        creation: 2021-10-24T13:20:42.468Z
+        lastAccessed: 2021-10-24T13:20:42.468Z
+        id: "2866902501150532"
+      - key: __sdcfduid
+        value: 2f875a3234cd11ec973e42010a0a03adfc206d46a8884e0dfc63073dad75690d0673f3e25c4a764e10dfbd9a454519ac
+        expires: 2026-10-23T13:20:42.000Z
+        maxAge: 157680000
+        domain: discord.com
+        path: /
+        secure: true
+        httpOnly: true
+        hostOnly: true
+        creation: 2021-10-24T13:20:42.469Z
+        lastAccessed: 2021-10-24T13:20:42.469Z
+        id: "5050704910784842"
+    _type: cookie_jar
+  - _id: spc_582a8dc367054622905063244be520c8
+    parentId: wrk_79a3fb2ba3c84c54a310f281f796e3a7
+    modified: 1634200473102
+    created: 1634200473102
+    fileName: realmsense
+    contents: ""
+    contentType: yaml
+    _type: api_spec
+  - _id: env_ef0252a677414acca6dbb9e822ab4481
+    parentId: env_4ae42a04ab82834623d5d003f6583b5099d51bcc
+    modified: 1636029765469
+    created: 1634200519057
+    name: realmsense local dev
+    data:
+      API_URL: http://127.0.0.1:3000
+      TESTING_USERNAME: Extacy
+      TESTING_PASSWORD: asd
+      TESTING_EMAIL: admin@realmsense.cc
+      AUTH_TOKEN: "{% response 'body', 'req_7e79827781e34394b6e5a8eba7882ae4',
+        'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+      REALM_AUTHKEY: gBjt8d2SqrCyLKMLaVEsZJ2E8DuU7Raz
+      PLAYERS_AUTHKEY: 7V2e6S2M6uAqujm8rhHZxXE4izegc87p
+    dataPropertyOrder:
+      "&":
+        - API_URL
+        - TESTING_USERNAME
+        - TESTING_PASSWORD
+        - TESTING_EMAIL
+        - AUTH_TOKEN
+        - REALM_AUTHKEY
+        - PLAYERS_AUTHKEY
+    color: null
+    isPrivate: false
+    metaSortKey: 1634200519057
+    _type: environment
