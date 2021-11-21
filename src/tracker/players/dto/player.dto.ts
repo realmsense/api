@@ -7,7 +7,7 @@ export class PlayerDto implements IPlayer {
     // @IsNumber()
     public objectID?: number;
 
-    public updatedTime = Date.now();
+    public updatedTime = new Date();
     
     @IsNumber()
     public objectType: number;

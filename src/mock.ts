@@ -51,7 +51,7 @@ export function generateMockPlayers(amount: number): IPlayer[] {
         const player: IPlayer = {
             name              : "Test Player",
             nameChosen        : true,
-            updatedTime       : Date.now(),
+            updatedTime       : new Date(),
             accountID         : randomNum(0, 1000).toString(),
             playerID          : randomNum(0, 1000),
             supporter         : randomBool(),
