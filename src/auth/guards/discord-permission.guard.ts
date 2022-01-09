@@ -2,8 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { CanActivate, ExecutionContext, Injectable, SetMetadata } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
-import { Permission } from "../../../shared/src";
-import { ENV } from "../../../shared/src/constants/environment";
+import { ENV, Permission } from "@realmsense/shared";
 import { DiscordService } from "../../tracker/discord/discord.service";
 
 @Injectable()

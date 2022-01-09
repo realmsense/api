@@ -1,7 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, MessageEvent, Patch, Put, Query, Sse } from "@nestjs/common";
+import { ENV, IRealm } from "@realmsense/shared";
 import { Observable } from "rxjs";
-import { IRealm } from "../../../shared/src";
-import { ENV } from "../../../shared/src/constants/environment";
 import { SkipJWTAuth } from "../../auth/auth.constants";
 import { RequireAuthKey } from "../../auth/guards/authkey.guard";
 import { RealmDto } from "./interfaces/realm.dto";

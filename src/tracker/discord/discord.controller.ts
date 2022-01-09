@@ -1,7 +1,6 @@
 import { Controller, Get, MessageEvent, Query, Sse, UseGuards } from "@nestjs/common";
+import { ENV, Permission, IPlayer, IRealm } from "@realmsense/shared";
 import { Observable } from "rxjs";
-import { IPlayer, IRealm, Permission } from "../../../shared/src";
-import { ENV } from "../../../shared/src/constants/environment";
 import { SkipJWTAuth } from "../../auth/auth.constants";
 import { RequireAuthKey } from "../../auth/guards/authkey.guard";
 import { DiscordPermissionGuard, RequireDiscordPermissionKey } from "../../auth/guards/discord-permission.guard";

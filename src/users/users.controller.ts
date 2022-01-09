@@ -1,6 +1,6 @@
 import { Body, Controller, Get, ParseIntPipe, Post, Put, Query, Request, Res } from "@nestjs/common";
+import { Permission } from "@realmsense/shared";
 import { Response } from "express";
-import { Permission } from "../../shared/src";
 import { SkipJWTAuth } from "../auth/auth.constants";
 import { RequirePermission } from "../auth/guards/permission.guard";
 import { LinkDiscordDTO } from "./interfaces/link-discord.dto";

@@ -1,5 +1,5 @@
 import { Body, Controller, Post, Request, UseGuards } from "@nestjs/common";
-import { IAuthToken } from "../../shared/src";
+import { IAuthToken } from "@realmsense/shared";
 import { SkipJWTAuth } from "./auth.constants";
 import { AuthService } from "./auth.service";
 import { LocalAuthGuard } from "./guards/local-auth.guard";

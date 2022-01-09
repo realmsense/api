@@ -1,4 +1,4 @@
-import { Classes, GuildRank, IPlayer, IRealm, Servers } from "../shared/src";
+import { IRealm, Servers, IPlayer, GuildRank, Classes } from "@realmsense/shared";
 
 function randomNum(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);

@@ -1,8 +1,8 @@
 import { ConflictException, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { Permission } from "@realmsense/shared";
 import * as fs from "fs";
 import { Repository } from "typeorm";
-import { Permission } from "../../shared/src";
 import { User } from "../users/interfaces/user.entity";
 import { Build } from "./interfaces/build.entity";
 import { BuildType, CreateBuildTypeDTO } from "./interfaces/build_type.entity";

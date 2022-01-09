@@ -3,7 +3,7 @@
 
 import { CanActivate, ExecutionContext, Injectable, SetMetadata } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
-import { Permission } from "../../../shared/src";
+import { Permission } from "@realmsense/shared";
 import { User } from "../../users/interfaces/user.entity";
 
 

@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { IPlayer } from "@realmsense/shared";
 import { Raw, Repository } from "typeorm";
-import { IPlayer } from "../../../shared/src";
 import { User } from "../../users/interfaces/user.entity";
 import { PlayerDto } from "./dto/player.dto";
 import { WatchListDTO } from "./dto/watchlist.dto";

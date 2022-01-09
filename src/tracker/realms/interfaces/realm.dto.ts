@@ -1,6 +1,6 @@
+import { IRealm, IWorldPosData, IServer } from "@realmsense/shared";
 import { Type } from "class-transformer";
 import { IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
-import { IRealm, IServer, IWorldPosData } from "../../../../shared/src";
 import { ServerDTO } from "../../interfaces/server.dto";
 import { WorldPosDataDTO } from "../../interfaces/worldposdata.dto";
 

@@ -1,8 +1,8 @@
 import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, ParseIntPipe, Post, Put, Query, Request, Res, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
+import { Permission } from "@realmsense/shared";
 import { Response } from "express";
 import { diskStorage } from "multer";
-import { Permission } from "../../shared/src";
 import { RequirePermission } from "../auth/guards/permission.guard";
 import { BuildsService } from "./builds.service";
 import { Build } from "./interfaces/build.entity";

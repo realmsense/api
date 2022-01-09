@@ -1,8 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
+import { IAuthToken, ENV } from "@realmsense/shared";
 import * as bcrypt from "bcrypt";
-import { IAuthToken } from "../../shared/src";
-import { ENV } from "../../shared/src/constants/environment";
 import { User } from "../users/interfaces/user.entity";
 import { UsersService } from "../users/users.service";
 

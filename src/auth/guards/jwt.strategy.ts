@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
+import { ENV } from "@realmsense/shared";
 import { ExtractJwt, Strategy } from "passport-jwt";
-import { ENV } from "../../../shared/src/constants/environment";
 import { User } from "../../users/interfaces/user.entity";
 import { UsersService } from "../../users/users.service";
 

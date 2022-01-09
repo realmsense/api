@@ -1,6 +1,6 @@
+import { IPlayer, IServer, IWorldPosData, GuildRank } from "@realmsense/shared";
 import { Type } from "class-transformer";
 import { IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator";
-import { GuildRank, IPlayer, IServer, IWorldPosData } from "../../../../shared/src";
 import { ServerDTO } from "../../interfaces/server.dto";
 
 export class PlayerDto implements IPlayer {

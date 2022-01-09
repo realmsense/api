@@ -1,6 +1,5 @@
 import { Body, Controller, Delete, Get, HttpCode, Post, Put, Query, Request } from "@nestjs/common";
-import { IPlayer } from "../../../shared/src";
-import { ENV } from "../../../shared/src/constants/environment";
+import { ENV, IPlayer } from "@realmsense/shared";
 import { SkipJWTAuth } from "../../auth/auth.constants";
 import { RequireAuthKey } from "../../auth/guards/authkey.guard";
 import { User } from "../../users/interfaces/user.entity";

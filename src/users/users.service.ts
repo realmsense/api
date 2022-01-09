@@ -1,11 +1,11 @@
 import { BadRequestException, HttpException, HttpStatus, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { ENV } from "@realmsense/shared";
 import axios from "axios";
 import { APIUser, RESTPostOAuth2AccessTokenResult, RouteBases } from "discord-api-types/v9";
 import { Response } from "express";
 import qs from "qs";
 import { FindConditions, Repository } from "typeorm";
-import { ENV } from "../../shared/src/constants/environment";
 import { DiscordLink } from "./interfaces/discord-link.entity";
 import { User } from "./interfaces/user.entity";
 

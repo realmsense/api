@@ -1,6 +1,6 @@
+import { ENV } from "@realmsense/shared";
 import { IsInt, IsNotEmpty } from "class-validator";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { ENV } from "../../../shared/src/constants/environment";
 import { BuildType } from "./build_type.entity";
 
 @Entity({ database: ENV.Database.db.Default })

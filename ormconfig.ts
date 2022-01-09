@@ -1,3 +1,3 @@
-import { ENV } from "./shared/src/constants/environment";
+import { ENV } from "@realmsense/shared";
 
 export = ENV.Database.config;

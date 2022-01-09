@@ -1,6 +1,5 @@
+import { ENV, IDiscordLink } from "@realmsense/shared";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { IDiscordLink } from "../../../shared/src";
-import { ENV } from "../../../shared/src/constants/environment";
 
 @Entity({ database: ENV.Database.db.Customers })
 export class DiscordLink implements IDiscordLink {
