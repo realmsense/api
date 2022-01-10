@@ -16,7 +16,9 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node .",
-    "lint": "eslint src --ext ts"
+    "lint": "eslint src --ext ts",
+    "preinstall": "npm run build-shared",
+    "build-shared": "cd ./shared && npm install && npm run build"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
