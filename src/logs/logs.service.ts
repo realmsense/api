@@ -14,7 +14,7 @@ export class LogsService {
         this.botStatuses.push(status);
     }
 
-    public getBotStatuses(guid?: string): IBotStatus[] {
+    public getBotStatusHistory(guid?: string): IBotStatus[] {
         if (guid) {
             return this.botStatuses.filter((value) => value.guid == guid);
         }
