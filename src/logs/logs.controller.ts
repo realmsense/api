@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Put, Query } from "@nestjs/common";
+import { Body, Controller, Get, Put, Query, Sse, MessageEvent } from "@nestjs/common";
 import { ENV, IBotStatus, Permission } from "@realmsense/shared";
+import { Observable } from "rxjs";
 import { SkipJWTAuth } from "../auth/auth.constants";
 import { RequireAuthKey } from "../auth/guards/authkey.guard";
 import { RequirePermission } from "../auth/guards/permission.guard";
@@ -32,5 +33,10 @@ export class LogsController {
     @RequirePermission(Permission.ACCESS_LOGS)
     public getBotStatusHistory(@Query("guid") guid?: string): IBotStatus[] {
         return this.logsService.getBotStatusHistory(guid);
+    }
+
+    @Sse("botStatus/events")
+    public realmEvents(): Observable<MessageEvent> {
+        return this.logsService.sendBotStatusEvents();
     }
 }

@@ -1,10 +1,12 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, MessageEvent } from "@nestjs/common";
 import { IBotStatus } from "@realmsense/shared";
+import { Observable, Subject } from "rxjs";
 
 @Injectable()
 export class LogsService {
 
     private botStatuses: IBotStatus[] = [];
+    public readonly events = new Subject<MessageEvent>();
     
     constructor() {
         this.botStatuses = [];
@@ -12,6 +14,7 @@ export class LogsService {
 
     public addBotStatus(status: IBotStatus): void {
         this.botStatuses.push(status);
+        this.callEvent(status);
     }
 
     public getBotStatusHistory(guid?: string): IBotStatus[] {
@@ -36,5 +39,13 @@ export class LogsService {
             statuses.push(botStatus);
         }
         return statuses;
+    }
+
+    public callEvent(status: IBotStatus): void {
+        this.events.next({ data: status });
+    }
+
+    public sendBotStatusEvents(): Observable<MessageEvent> {
+        return this.events.asObservable();
     }
 }
