@@ -17,6 +17,11 @@ export class LogsService {
         this.callEvent(status);
     }
 
+    public clearBotStatuses(): void {
+        this.botStatuses = [];
+        this.callEvent("clear");
+    }
+
     public getBotStatusHistory(guid?: string): IBotStatus[] {
         if (guid) {
             return this.botStatuses.filter((value) => value.guid == guid);
@@ -41,7 +46,7 @@ export class LogsService {
         return statuses;
     }
 
-    public callEvent(status: IBotStatus): void {
+    public callEvent(status: IBotStatus | "clear"): void {
         this.events.next({ data: status });
     }
 
