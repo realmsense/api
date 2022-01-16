@@ -11,7 +11,7 @@ import { DiscordService } from "./discord.service";
 
 @SkipJWTAuth()
 @UseGuards(DiscordPermissionGuard)
-@RequireAuthKey(ENV.Authkey.Discord)
+@RequireAuthKey()
 @Controller("discord")
 export class DiscordController {
 

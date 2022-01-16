@@ -12,7 +12,7 @@ export class RealmsController {
     constructor(private realmService: RealmsService) { }
 
     @Delete("")
-    @RequireAuthKey(ENV.Authkey.Realms)
+    @RequireAuthKey()
     @SkipJWTAuth()
     public deleteRealms(@Query("objectId") objectId?: number): void {
         return this.realmService.deleteRealms(objectId);
@@ -20,14 +20,14 @@ export class RealmsController {
 
     @Put("")
     @HttpCode(201)
-    @RequireAuthKey(ENV.Authkey.Realms)
+    @RequireAuthKey()
     @SkipJWTAuth()
     public createRealm(@Body() realmDto: RealmDto): void {
         return this.realmService.createRealm(realmDto);
     }
 
     @Patch("")
-    @RequireAuthKey(ENV.Authkey.Realms)
+    @RequireAuthKey()
     @SkipJWTAuth()
     public updateRealm(@Body() realmDto: RealmDto): void {
         return this.realmService.updateRealm(realmDto);

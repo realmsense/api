@@ -16,7 +16,7 @@ export class PlayersController {
 
     @Put("")
     @HttpCode(201)
-    @RequireAuthKey(ENV.Authkey.Players)
+    @RequireAuthKey()
     @SkipJWTAuth()
     public createPlayer(@Body() playerDto: PlayerDto): Promise<void> {
         return this.playersService.createPlayer(playerDto);

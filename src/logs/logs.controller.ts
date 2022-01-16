@@ -17,7 +17,7 @@ export class LogsController {
 
     @Put("botStatus")
     @SkipJWTAuth()
-    @RequireAuthKey(ENV.Authkey.Logs)
+    @RequireAuthKey()
     public addBotStatus(@Body() statusDTO: BotStatusDTO): void {
         statusDTO.time = new Date();
         return this.logsService.addBotStatus(statusDTO);
@@ -25,7 +25,7 @@ export class LogsController {
 
     @Post("botStatus/clear")
     @SkipJWTAuth()
-    @RequireAuthKey(ENV.Authkey.Logs)
+    @RequireAuthKey()
     public clearBotStatus(): void {
         return this.logsService.clearBotStatuses();
     }

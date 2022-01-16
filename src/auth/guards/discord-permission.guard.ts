@@ -29,7 +29,7 @@ export class DiscordPermissionGuard implements CanActivate {
             return false;
         }
 
-        if (request.query["authkey"] != ENV.Authkey.Discord) {
+        if (request.query["authkey"] != ENV.Authkey.TrackerDiscord) {
             return false;
         }
 
