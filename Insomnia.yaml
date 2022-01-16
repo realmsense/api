@@ -1,11 +1,11 @@
 _type: export
 __export_format: 4
-__export_date: 2021-11-20T20:43:49.903Z
-__export_source: insomnia.desktop.app:v2021.6.0
+__export_date: 2022-01-16T03:25:41.621Z
+__export_source: insomnia.desktop.app:v2021.7.2
 resources:
   - _id: req_7e79827781e34394b6e5a8eba7882ae4
     parentId: fld_ac20d8a2081c40dfaaab0b03f8155519
-    modified: 1637438755880
+    modified: 1642023639652
     created: 1634200557413
     url: "{{API_URL}}/auth/login"
     name: auth/login
@@ -16,7 +16,7 @@ resources:
       text: |-
         {
             "username": "{{TESTING_USERNAME}}",
-            "password": "{{TESTING_PASSWORD}}a"
+            "password": "{{TESTING_PASSWORD}}"
         }
     parameters: []
     headers:
@@ -53,7 +53,7 @@ resources:
     _type: workspace
   - _id: req_04195616739f4f2b987eec78b751cfdf
     parentId: fld_ac20d8a2081c40dfaaab0b03f8155519
-    modified: 1636021435119
+    modified: 1642023546747
     created: 1634728626675
     url: "{{API_URL}}/auth/changePassword"
     name: auth/changePassword
@@ -85,7 +85,7 @@ resources:
     _type: request
   - _id: req_ff2f15c01e564d1db23566cb33187c23
     parentId: fld_ac20d8a2081c40dfaaab0b03f8155519
-    modified: 1637237543190
+    modified: 1642023540111
     created: 1634201073982
     url: "{{API_URL}}/auth/register"
     name: auth/register
@@ -201,7 +201,7 @@ resources:
     _type: request
   - _id: req_6af444b9dd0c431691308852ca98d935
     parentId: fld_fbb1886d46e045e2b03265ce92d746a9
-    modified: 1637439289067
+    modified: 1642023423967
     created: 1634202615451
     url: "{{API_URL}}/user/update"
     name: user/update
@@ -232,7 +232,7 @@ resources:
     _type: request
   - _id: req_d342d09e9c7e4599b9dbadc4aa4da4f4
     parentId: fld_fbb1886d46e045e2b03265ce92d746a9
-    modified: 1637439288091
+    modified: 1642023431741
     created: 1634202699132
     url: "{{API_URL}}/user/all"
     name: user/all
@@ -253,6 +253,141 @@ resources:
       type: bearer
       token: "{{AUTH_TOKEN}}"
     metaSortKey: -1634202392381.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_35e16084bbb14ef89e41375cc5ce48f4
+    parentId: fld_dc6314b472814facafbdf917c06b6c43
+    modified: 1642027092466
+    created: 1641851313721
+    url: "{{API_URL}}/logs/botStatus/history"
+    name: botStatus/history
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_fd9d0ef736c6470899c38e41b6d243a4
+        name: guid
+        value: "bot #3"
+        description: ""
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ AUTH_TOKEN }}"
+    metaSortKey: -1641851313721
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_dc6314b472814facafbdf917c06b6c43
+    parentId: fld_931f169870a8495291b64a86ee714b76
+    modified: 1641851307304
+    created: 1641851307304
+    name: logs
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1641851307304
+    _type: request_group
+  - _id: fld_931f169870a8495291b64a86ee714b76
+    parentId: wrk_79a3fb2ba3c84c54a310f281f796e3a7
+    modified: 1634201745958
+    created: 1634201183811
+    name: tracker
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1634200875715.5
+    _type: request_group
+  - _id: req_001ca29ec6b9437d9c622590d09b8bd0
+    parentId: fld_dc6314b472814facafbdf917c06b6c43
+    modified: 1642027085317
+    created: 1641853805460
+    url: "{{API_URL}}/logs/botStatus/current"
+    name: botStatus/current
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_29b46187455643259c8b02460d0dfe88
+        name: authkey
+        value: hnFQo7QzsEA45GAsAHYxYeqgshrZccGt
+        description: ""
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ AUTH_TOKEN }}"
+    metaSortKey: -1639940311237.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1f148c17bd624498954b0cd93896b2c4
+    parentId: fld_dc6314b472814facafbdf917c06b6c43
+    modified: 1642303482953
+    created: 1641852471092
+    url: "{{API_URL}}/logs/botStatus"
+    name: botStatus (create)
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"status": "Moving",
+        	"guid": "bot #3",
+        	"message": "Tracking AsiaSouthEast dn"
+        }
+    parameters:
+      - id: pair_29b46187455643259c8b02460d0dfe88
+        name: authkey
+        value: hnFQo7QzsEA45GAsAHYxYeqgshrZccGt
+        description: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_645d37f3947b486983e8062078623761
+    authentication: {}
+    metaSortKey: -1638029308753.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bc56fa77962c45bdbe082a6389b17542
+    parentId: fld_dc6314b472814facafbdf917c06b6c43
+    modified: 1642303480109
+    created: 1642029754131
+    url: "{{API_URL}}/logs/botStatus"
+    name: botStatus (clear)
+    description: ""
+    method: DELETE
+    body: {}
+    parameters:
+      - id: pair_29b46187455643259c8b02460d0dfe88
+        name: authkey
+        value: hnFQo7QzsEA45GAsAHYxYeqgshrZccGt
+        description: ""
+        disabled: false
+    headers: []
+    authentication: {}
+    metaSortKey: -1636118306269.75
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -303,16 +438,6 @@ resources:
     environment: {}
     environmentPropertyOrder: null
     metaSortKey: -1634201221836
-    _type: request_group
-  - _id: fld_931f169870a8495291b64a86ee714b76
-    parentId: wrk_79a3fb2ba3c84c54a310f281f796e3a7
-    modified: 1634201745958
-    created: 1634201183811
-    name: tracker
-    description: ""
-    environment: {}
-    environmentPropertyOrder: null
-    metaSortKey: -1634200875715.5
     _type: request_group
   - _id: req_ebaa2fb424424c3d87f36586e207ad5b
     parentId: fld_c5c3e719c53e42a1800d225b499783d9
@@ -844,7 +969,7 @@ resources:
     _type: api_spec
   - _id: env_ef0252a677414acca6dbb9e822ab4481
     parentId: env_4ae42a04ab82834623d5d003f6583b5099d51bcc
-    modified: 1636029765469
+    modified: 1642023473147
     created: 1634200519057
     name: realmsense local dev
     data:

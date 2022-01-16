@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Put, Query, Sse, MessageEvent, Post } from "@nestjs/common";
-import { ENV, IBotStatus, Permission } from "@realmsense/shared";
+import { Body, Controller, Get, Put, Query, Sse, MessageEvent, Delete } from "@nestjs/common";
+import { IBotStatus, Permission } from "@realmsense/shared";
 import { Observable } from "rxjs";
 import { SkipJWTAuth } from "../auth/auth.constants";
 import { RequireAuthKey } from "../auth/guards/authkey.guard";
@@ -23,7 +23,7 @@ export class LogsController {
         return this.logsService.addBotStatus(statusDTO);
     }
 
-    @Post("botStatus/clear")
+    @Delete("botStatus")
     @SkipJWTAuth()
     @RequireAuthKey()
     public clearBotStatus(): void {
