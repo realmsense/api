@@ -1,11 +1,11 @@
 _type: export
 __export_format: 4
-__export_date: 2022-01-16T03:25:41.621Z
+__export_date: 2022-01-17T00:30:41.366Z
 __export_source: insomnia.desktop.app:v2021.7.2
 resources:
   - _id: req_7e79827781e34394b6e5a8eba7882ae4
     parentId: fld_ac20d8a2081c40dfaaab0b03f8155519
-    modified: 1642023639652
+    modified: 1642379247932
     created: 1634200557413
     url: "{{API_URL}}/auth/login"
     name: auth/login
@@ -263,7 +263,7 @@ resources:
     _type: request
   - _id: req_35e16084bbb14ef89e41375cc5ce48f4
     parentId: fld_dc6314b472814facafbdf917c06b6c43
-    modified: 1642027092466
+    modified: 1642379348396
     created: 1641851313721
     url: "{{API_URL}}/logs/botStatus/history"
     name: botStatus/history
@@ -272,7 +272,7 @@ resources:
     body: {}
     parameters:
       - id: pair_fd9d0ef736c6470899c38e41b6d243a4
-        name: guid
+        name: name
         value: "bot #3"
         description: ""
     headers: []
@@ -310,7 +310,7 @@ resources:
     _type: request_group
   - _id: req_001ca29ec6b9437d9c622590d09b8bd0
     parentId: fld_dc6314b472814facafbdf917c06b6c43
-    modified: 1642027085317
+    modified: 1642379343248
     created: 1641853805460
     url: "{{API_URL}}/logs/botStatus/current"
     name: botStatus/current
@@ -337,7 +337,7 @@ resources:
     _type: request
   - _id: req_1f148c17bd624498954b0cd93896b2c4
     parentId: fld_dc6314b472814facafbdf917c06b6c43
-    modified: 1642303482953
+    modified: 1642379339359
     created: 1641852471092
     url: "{{API_URL}}/logs/botStatus"
     name: botStatus (create)
@@ -348,13 +348,13 @@ resources:
       text: |-
         {
         	"status": "Moving",
-        	"guid": "bot #3",
+        	"name": "bot #3",
         	"message": "Tracking AsiaSouthEast dn"
         }
     parameters:
       - id: pair_29b46187455643259c8b02460d0dfe88
         name: authkey
-        value: hnFQo7QzsEA45GAsAHYxYeqgshrZccGt
+        value: "{{AUTHKEY}}"
         description: ""
     headers:
       - name: Content-Type
@@ -372,7 +372,7 @@ resources:
     _type: request
   - _id: req_bc56fa77962c45bdbe082a6389b17542
     parentId: fld_dc6314b472814facafbdf917c06b6c43
-    modified: 1642303480109
+    modified: 1642379327233
     created: 1642029754131
     url: "{{API_URL}}/logs/botStatus"
     name: botStatus (clear)
@@ -382,7 +382,7 @@ resources:
     parameters:
       - id: pair_29b46187455643259c8b02460d0dfe88
         name: authkey
-        value: hnFQo7QzsEA45GAsAHYxYeqgshrZccGt
+        value: "{{AUTHKEY}}"
         description: ""
         disabled: false
     headers: []
@@ -969,7 +969,7 @@ resources:
     _type: api_spec
   - _id: env_ef0252a677414acca6dbb9e822ab4481
     parentId: env_4ae42a04ab82834623d5d003f6583b5099d51bcc
-    modified: 1642023473147
+    modified: 1642379311178
     created: 1634200519057
     name: realmsense local dev
     data:
@@ -979,8 +979,7 @@ resources:
       TESTING_EMAIL: admin@realmsense.cc
       AUTH_TOKEN: "{% response 'body', 'req_7e79827781e34394b6e5a8eba7882ae4',
         'b64::JC50b2tlbg==::46b', 'never', 60 %}"
-      REALM_AUTHKEY: gBjt8d2SqrCyLKMLaVEsZJ2E8DuU7Raz
-      PLAYERS_AUTHKEY: 7V2e6S2M6uAqujm8rhHZxXE4izegc87p
+      AUTHKEY: mQWhRzGPBTkkFrDMeZtKhGbF9L77z9YjxXxNqGVum9Gr8FmRMrKJrebsmTUa3pwr
     dataPropertyOrder:
       "&":
         - API_URL
@@ -988,8 +987,7 @@ resources:
         - TESTING_PASSWORD
         - TESTING_EMAIL
         - AUTH_TOKEN
-        - REALM_AUTHKEY
-        - PLAYERS_AUTHKEY
+        - AUTHKEY
     color: null
     isPrivate: false
     metaSortKey: 1634200519057

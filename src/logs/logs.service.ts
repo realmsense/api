@@ -22,25 +22,25 @@ export class LogsService {
         this.callEvent("clear");
     }
 
-    public getBotStatusHistory(guid?: string): IBotStatus[] {
-        if (guid) {
-            return this.botStatuses.filter((value) => value.guid == guid);
+    public getBotStatusHistory(name?: string): IBotStatus[] {
+        if (name) {
+            return this.botStatuses.filter((value) => value.name == name);
         }
 
         return this.botStatuses;
     }
     
     public getCurrentBotStatus(): IBotStatus[] {
-        const guids: string[] = [];
+        const names: string[] = [];
         const statuses: IBotStatus[] = [];
 
         const reversed = [...this.botStatuses].reverse();
         for (const botStatus of reversed) {
-            if (guids.includes(botStatus.guid)) {
+            if (names.includes(botStatus.name)) {
                 continue;
             }
 
-            guids.push(botStatus.guid);
+            names.push(botStatus.name);
             statuses.push(botStatus);
         }
         return statuses;

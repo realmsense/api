@@ -38,8 +38,8 @@ export class LogsController {
    
     @Get("botStatus/history")
     @RequirePermission(Permission.ACCESS_LOGS)
-    public getBotStatusHistory(@Query("guid") guid?: string): IBotStatus[] {
-        return this.logsService.getBotStatusHistory(guid);
+    public getBotStatusHistory(@Query("name") name?: string): IBotStatus[] {
+        return this.logsService.getBotStatusHistory(name);
     }
 
     @Sse("botStatus/events")

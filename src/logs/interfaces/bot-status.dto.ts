@@ -6,7 +6,7 @@ export class BotStatusDTO implements IBotStatus {
     public status: IBotStatus["status"];
 
     @IsNotEmpty()
-    public guid: string;
+    public name: string;
     
     @IsNotEmpty()
     public message: string;
